@@ -1,5 +1,7 @@
 export interface Post {
     id : String,
-    title: string;
-    content: string;
+    hometeam: String;
+    awayteam: String;
+    hometeamScore: String;
+    awayteamScore: String;
 }

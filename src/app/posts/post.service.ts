@@ -25,11 +25,13 @@ export class PostService {
         return this.postUpdated.asObservable();
     }
     
-    addPost(title: string, content: string) {
+    addPost(hometeam: string, awayteam: string, hometeamScore: string, awayteamScore: string) {
         const post: Post = {
             id : null,
-            title: title,
-            content: content
+            hometeam: hometeam,
+            awayteam: awayteam,
+            hometeamScore: hometeamScore,
+            awayteamScore: awayteamScore
         }
         this.posts.push(post);
         this.postUpdated.next([...this.posts])

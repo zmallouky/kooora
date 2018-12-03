@@ -1,13 +1,15 @@
 <mat-card>
     <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+        
+
         <mat-form-field>
-        <input matInput type="text" name="title" ngModel required minlength="3" #title="ngModel">
-        <mat-error *ngIf="title.invalid">"invalid title."</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-        <textarea matInput rows="4" type="text" name="content" ngModel required minlength="1" #content="ngModel"></textarea>
-        <mat-error *ngIf="content.invalid">Enter content</mat-error>
-        </mat-form-field>
+            <textarea matInput rows="4" type="text" name="hometeamScore" ngModel required minlength="1" #hometeamScore="ngModel"></textarea>
+            <mat-error *ngIf="hometeamScore.invalid">Enter content</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput rows="4" type="text" name="awayteamScore" ngModel required minlength="1" #awayteamScore="ngModel"></textarea>
+                <mat-error *ngIf="awayteamScore.invalid">Enter content</mat-error>
+                </mat-form-field>
         <button mat-raised-button color='primary' type="submit">Save</button>
     </form>
 

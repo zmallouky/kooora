@@ -36,7 +36,7 @@ app.use("/api/posts", (req, res, next) => {
             content: "this is the learning process"
         },
     ]
-    unirest.get('https://apifootball.com/api/?action=get_events&from=2016-10-30&to=2016-11-01&league_id=62&APIkey=dd279fef268763e746b12fbb22e486275299d8c6a982957c97431c201ea8194c')
+    unirest.get('https://apifootball.com/api/?action=get_events&from=2018-12-01&to=2018-12-02&league_id=109&APIkey=dd279fef268763e746b12fbb22e486275299d8c6a982957c97431c201ea8194c')
     .end(function (response) {
         //console.log(response.body);
         
@@ -47,9 +47,11 @@ app.use("/api/posts", (req, res, next) => {
             filtredQuery.push(
              
                 {
-                    id: response.body[i].match_id, 
-                    title: response.body[i].match_hometeam_name.concat("-----"+response.body[i].match_awayteam_name),
-                    content: response.body[i].match_hometeam_score.concat("-"+response.body[i].match_awayteam_score)
+                    id: response.body[i].match_id,
+                    hometeam: response.body[i].match_hometeam_name,
+                    awayteam: response.body[i].match_awayteam_name,
+                    hometeamScore: response.body[i].match_hometeam_score,
+                    awayteamScore: response.body[i].match_awayteam_score
                     
                 }
             )
@@ -59,7 +61,7 @@ app.use("/api/posts", (req, res, next) => {
     
         res.status(200).json( {
         messeage: 'succes',
-        posts:  filtredQuery //response.body //posts
+        posts:  response.body//filtredQuery  //posts
     });
     });
  

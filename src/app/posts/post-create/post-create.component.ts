@@ -18,7 +18,7 @@ export class PostCreateComponenet {
         if(form.invalid) {
             return;
         }
-        this.postService.addPost(form.value.title, form.value.content);
+        this.postService.addPost(form.value.hometeam, form.value.awayteam, form.value.hometeamScore, form.value.awayteamScore);
         form.resetForm();
     }
     
