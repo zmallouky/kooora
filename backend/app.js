@@ -19,23 +19,7 @@ app.use((req, res ,next) => {
 });
 
 app.use("/api/posts", (req, res, next) => {
-    const posts = [ 
-        {
-            id: "fasdsd", 
-            title: "first",
-            content: "this is the learning process"
-        },
-        {
-            id: "fasdsdqs", 
-            title: "tiird",
-            content: "this is the learning process"
-        },
-        {
-            id: "fasdsdsds", 
-            title: "second",
-            content: "this is the learning process"
-        },
-    ]
+
     unirest.get('https://apifootball.com/api/?action=get_events&from=2018-12-01&to=2018-12-02&league_id=109&APIkey=dd279fef268763e746b12fbb22e486275299d8c6a982957c97431c201ea8194c')
     .end(function (response) {
         //console.log(response.body);
@@ -61,7 +45,7 @@ app.use("/api/posts", (req, res, next) => {
     
         res.status(200).json( {
         messeage: 'succes',
-        posts:  response.body//filtredQuery  //posts
+        posts:  response.body  //posts
     });
     });
  
