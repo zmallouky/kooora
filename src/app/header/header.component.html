@@ -1,1 +1,28 @@
-<mat-toolbar color ='primary'> MyMessages </mat-toolbar>
+<mat-toolbar>
+    <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    
+    <button mat-button>Home</button>
+    <button mat-button [matMenuTriggerFor]="leagues">Leagues</button>
+    <button mat-button>Predictor</button>
+    <button mat-button>Live Score</button>
+    <mat-menu #leagues="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="spanish">Liga BBVA</button>
+        <button mat-menu-item [matMenuTriggerFor]="french">Ligue 1</button>
+    </mat-menu>
+
+    <mat-menu #spanish="matMenu">
+        <button mat-menu-item>Ranking</button>
+        <button mat-menu-item>Today's matches</button>
+    </mat-menu>
+
+    <mat-menu #french="matMenu">
+        <button mat-menu-item>Ranking</button>
+        <button mat-menu-item>Today's matches</button>
+    </mat-menu>
+
+
+</mat-toolbar>
+
+
