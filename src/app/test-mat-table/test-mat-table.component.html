@@ -1,60 +1,59 @@
 <table mat-table *ngIf="dataSource" [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
   <!-- Position Column -->
-  <ng-container matColumnDef="Position">
+  <ng-container matColumnDef="position">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Position </th>
-    <td mat-cell *matCellDef="let ranking"> {{ranking.Position}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
   </ng-container>
 
   <!-- Name Column -->
-  <ng-container matColumnDef="Team">
+  <ng-container matColumnDef="teamname">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Team </th>
-    <td mat-cell *matCellDef="let ranking"> {{ranking.Team}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.teamname}} </td>
   </ng-container>
 
   <!-- Weight Column -->
-  <ng-container matColumnDef="Played">
+  <ng-container matColumnDef="played">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Played </th>
-    <td mat-cell *matCellDef="let ranking"> {{ranking.Played}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.played}} </td>
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="W">
+  <ng-container matColumnDef="w">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> W </th>
-    <td mat-cell *matCellDef="let ranking"> {{ranking.W}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.w}} </td>
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="D">
+  <ng-container matColumnDef="d">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> D </th>
-    <td mat-cell *matCellDef="let element"> {{element.D}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.d}} </td>
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="L">
+  <ng-container matColumnDef="l">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> L </th>
-    <td mat-cell *matCellDef="let element"> {{element.L}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.l}} </td>
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="GF">
+  <ng-container matColumnDef="gf">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> GF </th>
-    <td mat-cell *matCellDef="let element"> {{element.GF}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.gf}} </td>
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="GA">
+  <ng-container matColumnDef="ga">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> GA </th>
-    <td mat-cell *matCellDef="let element"> {{element.GA}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.ga}} </td>
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="Pts">
+  <ng-container matColumnDef="pts">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Pts </th>
-    <td mat-cell *matCellDef="let element"> {{element.Pts}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.pts}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<p *ngIf="dataSource.length<=0">no match currently</p>

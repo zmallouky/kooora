@@ -28,13 +28,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MatchListComponent } from './match/match-list/match-list.component';
 import { RankingComponent } from './ranking/ranking.component';
+import { TestMatTableComponent } from './test-mat-table/test-mat-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MatchListComponent,
-    RankingComponent
+    RankingComponent,
+    TestMatTableComponent
   ],
   imports: [
     BrowserModule,

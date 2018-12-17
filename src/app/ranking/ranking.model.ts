@@ -1,7 +1,7 @@
 export interface IRanking {
     id ?: String,
-    teamname?: String;
     position?: String;
+    teamname?: String;
     played?: String;
     w?: String;
     d?: String;
