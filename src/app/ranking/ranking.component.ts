@@ -23,10 +23,10 @@ export class RankingComponent implements OnInit, OnDestroy {
           this.ranking = ranking;
       });
       this.dataSource.sort = this.sort;
-  }
+  } 
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ranking);
+  dataSource = new MatTableDataSource(this.ranking);
 
   @ViewChild(MatSort) sort: MatSort;
 
