@@ -1,9 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
-const matchRoutes = require('./routes/footMatch');
+const Login = require('./db/login')
+
+const loginRoutes = require('./routes/userLogin');
 
 const app = express();
+
+mongoose.connect("mongodb+srv://elbo:ox7Q39FSvkpyvkMw@cluster0-vm6na.mongodb.net/kooora-db?retryWrites=true")
+.then( () => {
+    console.log("Connected succefuly to db");
+})
+.catch( () => {
+    console.log("failed to connect to db");
+});
+
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -18,6 +30,12 @@ app.use((req, res ,next) => {
     next(); 
 });
 
-app.use("/api/footMatch/", matchRoutes);
+app.use("/api/login/", loginRoutes);
+
+const login = new Login({
+    mail: 'anas',
+    password: 'elbo'
+});
+login.save();
 
 module.exports = app;
