@@ -5,11 +5,11 @@ import { Subscription } from 'rxjs';
 import { IRanking } from './ranking.model';
 import { RankingService } from './ranking.service';
 
-
-const ELEMENT_DATA: IRanking[] = [
-  {position: '1', teamname: 'Barcelone', played: '16', w: '9',
-     d: '4', l: '5', gf: '133', ga: '59', pts: '40'},
-
+var ELEMENT_DATA: IRanking[] = [
+  {position: '4', teamname: 'Beryllium', played: '12', w: '12',
+   d: '4', l: '4', gf: '4', ga: '3', pts: '13'},
+   {position: '2', teamname: 'Zeryllium', played: '13', w: '23',
+   d: '4', l: '4', gf: '2', ga: '1', pts: '15'},
 ];
 
 @Component({
@@ -19,28 +19,29 @@ const ELEMENT_DATA: IRanking[] = [
 })
 export class RankingComponent implements OnInit, OnDestroy {
 
-  ranking : IRanking[] = [];
-  rankingServiceSubscribtion : Subscription;
-  constructor( public rankingService: RankingService) {};
+  rankingServiceSubscribtion: Subscription;
 
-  displayedColumns: string[] = ['Position', 'Team', 'Played', 'W',
-  'D', 'L', 'GF', 'GA', 'Pts'];
+  constructor(public rankingService: RankingService) { };
 
-  dataSource: MatTableDataSource<IRanking>;
+  displayedColumns: string[] = ['position', 'teamname', 'played', 'w',
+    'd', 'l', 'gf', 'ga', 'pts'];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+ 
+
   @ViewChild(MatSort) sort: MatSort;
 
-
-
   ngOnInit() {
-      this.rankingServiceSubscribtion =this.rankingService.getRanking().subscribe((ranking:any[])=> {
-        
-          console.log("retour service=>" + ranking);
-          ranking.forEach(ranking=> console.log(ranking));
-          this.ranking = ranking;
-          this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-          console.log("dataSource=>" + this.dataSource.data);
-          this.dataSource.sort = this.sort;
-      });
+    this.rankingServiceSubscribtion = this.rankingService.getRanking().subscribe((ranking: IRanking[]) => {
+
+      //console.log("retour service=>" + ranking);
+      //ranking.forEach(ranking => console.log(ranking));
+      ELEMENT_DATA = ranking;
+      
+      //console.log("dataSource=>" + this.dataSource.data);
+      //this.dataSource.sort = this.sort;
+    });
+    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+    this.dataSource.sort = this.sort;
   }
 
   ngOnDestroy() {

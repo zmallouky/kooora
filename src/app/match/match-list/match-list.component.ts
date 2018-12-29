@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 
 import { MatchService } from '../match.service';
 import { IMatch } from '../match.model';
+
+
 @Component({
     selector: 'app-match-list',
     templateUrl: './match-list.component.html',
@@ -10,9 +12,13 @@ import { IMatch } from '../match.model';
 
 })
 export class MatchListComponent implements OnInit, OnDestroy {
+    public Date = new Date();
+    //planModel: any = {start_time: new Date() };
     matchs : IMatch[] = [];
     matchServiceSubscribtion : Subscription;
-    constructor( public postService: MatchService) {};
+    constructor( public postService: MatchService) {
+        this.postService.Date = this.dateFormat(this.Date.toLocaleDateString());
+    };
     
     ngOnInit() {
         this.matchServiceSubscribtion =this.postService.getMatchs().subscribe((matchs:any[])=> {
@@ -25,14 +31,23 @@ export class MatchListComponent implements OnInit, OnDestroy {
         console.log("j'ai cliqué favourite"+param);
     }
 
-    getDate(param:string) {
+    dateFormat(param:string){
         let date = param.split("/");
         let year = date[2];
         let month = date[0];
         let day = date[1];
-        let valideDate = year.concat("-").concat(month).concat("-").concat(day);
-        console.log("date!"+valideDate);
-        return valideDate;
+        let validFormat = year.concat("-").concat(month).concat("-").concat(day);
+        return validFormat;
+    }
+
+    getDate(param:string) {
+        this.postService.Date = this.dateFormat(param);
+        this.postService.announceDate(this.postService.Date);
+        this.matchServiceSubscribtion =this.postService.getMatchs().subscribe((matchs:any[])=> {
+            console.log("retour service=>" + matchs);
+            this.matchs = matchs;
+        });
+        return this.postService.Date;
     }
 
     doubleClick() {

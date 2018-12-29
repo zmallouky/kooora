@@ -55,8 +55,8 @@ import { TestMatTableComponent } from './test-mat-table/test-mat-table.component
     MatMenuModule,
     MatSidenavModule,
     MatListModule,
-    MatSortModule,
     MatTableModule,
+    MatSortModule,
     MatTabsModule,
     HttpClientModule  
   ],
