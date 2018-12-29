@@ -58,8 +58,8 @@ import { LoginComponenet } from './login/login.component';
     MatMenuModule,
     MatSidenavModule,
     MatListModule,
-    MatSortModule,
     MatTableModule,
+    MatSortModule,
     MatTabsModule,
     MatProgressSpinnerModule,
     HttpClientModule  
