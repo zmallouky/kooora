@@ -29,7 +29,8 @@ import { HeaderComponent } from './header/header.component';
 import { MatchListComponent } from './match/match-list/match-list.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { TestMatTableComponent } from './test-mat-table/test-mat-table.component';
-import { LoginComponenet } from './login/login.component';
+import { LoginComponent } from './auth//login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { LoginComponenet } from './login/login.component';
     MatchListComponent,
     RankingComponent,
     TestMatTableComponent,
-    LoginComponenet
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
