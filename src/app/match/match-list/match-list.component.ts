@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from 'rxjs';
+import { HttpClient } from '@angular/common/http'; 
+import { map } from 'rxjs/operators';
 
 import { MatchService } from '../match.service';
 import { IMatch } from '../match.model';
@@ -16,10 +18,11 @@ export class MatchListComponent implements OnInit, OnDestroy {
     //planModel: any = {start_time: new Date() };
     matchs : IMatch[] = [];
     matchServiceSubscribtion : Subscription;
+
     constructor( public postService: MatchService) {
         this.postService.Date = this.dateFormat(this.Date.toLocaleDateString());
     };
-    
+
     ngOnInit() {
         this.matchServiceSubscribtion =this.postService.getMatchs().subscribe((matchs:any[])=> {
             console.log("retour service=>" + matchs);
@@ -30,12 +33,14 @@ export class MatchListComponent implements OnInit, OnDestroy {
     maMetode(param:string) {
         console.log("j'ai cliqué favourite"+param);
     }
+    
 
     dateFormat(param:string){
         let date = param.split("/");
         let year = date[2];
         let month = date[0];
         let day = date[1];
+
         let validFormat = year.concat("-").concat(month).concat("-").concat(day);
         return validFormat;
     }
@@ -48,6 +53,7 @@ export class MatchListComponent implements OnInit, OnDestroy {
             this.matchs = matchs;
         });
         return this.postService.Date;
+
     }
 
     doubleClick() {

@@ -1,9 +1,21 @@
 const express = require('express');
-const https = require('https');
 const bodyParser = require('body-parser');
-var unirest = require('unirest');
+const mongoose = require('mongoose');
+
+const Login = require('./db/login')
+
+const loginRoutes = require('./routes/userLogin');
 
 const app = express();
+
+mongoose.connect("mongodb+srv://elbo:ox7Q39FSvkpyvkMw@cluster0-vm6na.mongodb.net/kooora-db?retryWrites=true")
+.then( () => {
+    console.log("Connected succefuly to db");
+})
+.catch( () => {
+    console.log("failed to connect to db");
+});
+
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -18,37 +30,12 @@ app.use((req, res ,next) => {
     next(); 
 });
 
-app.use("/api/posts", (req, res, next) => {
+app.use("/api/login/", loginRoutes);
 
-    unirest.get('https://apifootball.com/api/?action=get_events&from=2018-12-01&to=2018-12-02&league_id=109&APIkey=48e740cf97eecc9c1692f5b2d6bde1e90123ba1e5dc5c6699c7f38c9179c9e8f')
-    .end(function (response) {
-        //console.log(response.body);
-        
-        let filtredQuery  = [];
-        
-        for(i =0; i < response.body.length ; i++)
-        {
-            filtredQuery.push(
-             
-                {
-                    id: response.body[i].match_id,
-                    hometeam: response.body[i].match_hometeam_name,
-                    awayteam: response.body[i].match_awayteam_name,
-                    hometeamScore: response.body[i].match_hometeam_score,
-                    awayteamScore: response.body[i].match_awayteam_score
-                    
-                }
-            )
-            
-        }
-            
-    
-        res.status(200).json( {
-        messeage: 'succes',
-        posts:  response.body  //posts
-    });
-    });
- 
+const login = new Login({
+    mail: 'anas',
+    password: 'elbo'
 });
+login.save();
 
 module.exports = app;

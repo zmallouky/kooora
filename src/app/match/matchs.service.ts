@@ -14,9 +14,10 @@ export class PostService {
     constructor(private http: HttpClient) {}
 
     getMatchs(): Observable<any> {
-        let matchsObservable:Observable<any> = of(matchs);
+        let matchsObservable:Observable<any> =
+        of(this.http.get<{message: string, posts: any}>('http://localhost:3000/api/footMatch')); //off match to
         // TODO uncomment to use real service call
-        //this.http.get<{message: string, posts: any}>('http://localhost:3000/api/posts')
+        
         return matchsObservable
         .pipe(map((matchs:any[]) => 
                  matchs.map((match)=> {
