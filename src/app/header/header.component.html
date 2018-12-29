@@ -3,7 +3,7 @@
         <mat-icon>menu</mat-icon>
     </button>
     
-    <button mat-button>Home</button>
+    <a mat-button  routerLink="/" routerLinkActive="mat-accent">Home</a>
     <button mat-button [matMenuTriggerFor]="leagues">Leagues</button>
     <button mat-button>Predictor</button>
     <button mat-button>Live Score</button>
@@ -13,7 +13,7 @@
     </mat-menu>
 
     <mat-menu #spanish="matMenu">
-        <button mat-menu-item>Ranking</button>
+        <a mat-menu-item  routerLink="/ligaRank" routerLinkActive="mat-accent"> Ranking</a>
         <button mat-menu-item>Today's matches</button>
     </mat-menu>
 
@@ -21,6 +21,15 @@
         <button mat-menu-item>Ranking</button>
         <button mat-menu-item>Today's matches</button>
     </mat-menu>
+    <span class="spacer"></span>
+    <ul>
+        <li>
+            <a mat-button  routerLink="/login" routerLinkActive="mat-accent">Login</a> 
+        </li>
+        <li>
+            <a mat-button  routerLink="/login" routerLinkActive="mat-accent">Register</a> 
+        </li>
+    </ul>
 
 
 </mat-toolbar>

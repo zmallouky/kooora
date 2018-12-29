@@ -3,7 +3,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { 
   MatInputModule,
@@ -19,8 +19,8 @@ import {
   MatListModule,
   MatSortModule,
   MatTableModule,
-
   MatTabsModule,
+  MatProgressSpinnerModule,
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +29,7 @@ import { HeaderComponent } from './header/header.component';
 import { MatchListComponent } from './match/match-list/match-list.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { TestMatTableComponent } from './test-mat-table/test-mat-table.component';
+import { LoginComponenet } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -36,12 +37,14 @@ import { TestMatTableComponent } from './test-mat-table/test-mat-table.component
     HeaderComponent,
     MatchListComponent,
     RankingComponent,
-    TestMatTableComponent
+    TestMatTableComponent,
+    LoginComponenet
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,
@@ -58,6 +61,7 @@ import { TestMatTableComponent } from './test-mat-table/test-mat-table.component
     MatSortModule,
     MatTableModule,
     MatTabsModule,
+    MatProgressSpinnerModule,
     HttpClientModule  
   ],
   providers: [],
