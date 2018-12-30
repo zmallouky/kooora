@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const Login = require('./db/user')
 
 const loginRoutes = require('./routes/user');
+const savedMatchRoutes = require('./routes/savedMatch');
 
 const app = express();
 
@@ -30,5 +31,6 @@ app.use((req, res, next) => {
 });
 // authentifications routes
 app.use("/api/user", loginRoutes);
+app.use("/api/savedMatch", savedMatchRoutes)
 
 module.exports = app;
