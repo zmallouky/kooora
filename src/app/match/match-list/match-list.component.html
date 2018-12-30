@@ -11,10 +11,10 @@
         </mat-expansion-panel-header>
          {{match.hometeamScore}} - {{match.awayteamScore}} 
         <mat-action-row>
-            <button (click)="maMetode(match.hometeam)" mat-icon-button color="warn">
+            <button #fav (click)="favorite(match.hometeam, match.awayteam, date.value, fav.color)" mat-icon-button [color]="favColor">
                 <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
             </button>
         </mat-action-row>
     </mat-expansion-panel>
 </mat-accordion>
-<p *ngIf="matchs.length<=0">No match played on this date</p>
+<p *ngIf="matchs.length<0">No match played on this date</p>

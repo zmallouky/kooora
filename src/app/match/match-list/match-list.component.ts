@@ -18,6 +18,8 @@ export class MatchListComponent implements OnInit, OnDestroy {
     //planModel: any = {start_time: new Date() };
     matchs : IMatch[] = [];
     matchServiceSubscribtion : Subscription;
+    favColor = "warn";
+    
 
     constructor( public postService: MatchService) {
         this.postService.Date = this.dateFormat(this.Date.toLocaleDateString());
@@ -30,8 +32,14 @@ export class MatchListComponent implements OnInit, OnDestroy {
         });
     }
 
-    maMetode(param:string) {
-        console.log("j'ai cliqué favourite"+param);
+    favorite(home:string, away:string, date:string, color:string) {
+        console.log("home :"+home+" away :"+away+" date :"+this.dateFormat(date)+" color :"+color);
+        if(color == "warn")
+            this.favColor = "grey"
+        else
+            this.favColor = "warn"
+        let favorite = [home,away,date];
+        return favorite;
     }
     
 
