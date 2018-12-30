@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from 'rxjs';
-import { HttpClient } from '@angular/common/http'; 
+import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 import { MatchService } from '../match.service';
@@ -16,34 +16,34 @@ import { IMatch } from '../match.model';
 export class MatchListComponent implements OnInit, OnDestroy {
     public Date = new Date();
     //planModel: any = {start_time: new Date() };
-    matchs : IMatch[] = [];
-    matchServiceSubscribtion : Subscription;
+    matchs: IMatch[] = [];
+    matchServiceSubscribtion: Subscription;
     favColor = "warn";
-    
 
-    constructor( public postService: MatchService) {
+
+    constructor(public postService: MatchService) {
         this.postService.Date = this.dateFormat(this.Date.toLocaleDateString());
     };
 
     ngOnInit() {
-        this.matchServiceSubscribtion =this.postService.getMatchs().subscribe((matchs:any[])=> {
+        this.matchServiceSubscribtion = this.postService.getMatchs().subscribe((matchs: any[]) => {
             console.log("retour service=>" + matchs);
             this.matchs = matchs;
         });
     }
 
-    favorite(home:string, away:string, date:string, color:string) {
-        console.log("home :"+home+" away :"+away+" date :"+this.dateFormat(date)+" color :"+color);
-        if(color == "warn")
+    favorite(home: string, away: string, scoreHome: string, scoreAway, date: string, color: string) {
+        console.log("home :" + home + " away :" + away + "scoreHome " + scoreHome + "scoreAway" +
+            scoreAway + " date :" + this.dateFormat(date) + " color :" + color);
+        if (color == "warn")
             this.favColor = "grey"
         else
             this.favColor = "warn"
-        let favorite = [home,away,date];
-        return favorite;
+        return this.postService.saveMatch(home, away, scoreHome, scoreAway);
     }
-    
 
-    dateFormat(param:string){
+
+    dateFormat(param: string) {
         let date = param.split("/");
         let year = date[2];
         let month = date[0];
@@ -53,10 +53,10 @@ export class MatchListComponent implements OnInit, OnDestroy {
         return validFormat;
     }
 
-    getDate(param:string) {
+    getDate(param: string) {
         this.postService.Date = this.dateFormat(param);
         this.postService.announceDate(this.postService.Date);
-        this.matchServiceSubscribtion =this.postService.getMatchs().subscribe((matchs:any[])=> {
+        this.matchServiceSubscribtion = this.postService.getMatchs().subscribe((matchs: any[]) => {
             console.log("retour service=>" + matchs);
             this.matchs = matchs;
         });

@@ -1,14 +1,16 @@
 const express = require("express");
-const SavedMatch = require("../db/savedMatch");
+const Match = require("../db/match");
 
 const router = express.Router()
 
-router.get("/saveMatch", (req, res, next) => {
-    const match = new SavedMatch({ // create new match on mongoose with schema predifinded
-        hometeam: "toto",
-        awayteam: "toto",
-        hometeamScore: "toto",
-        awayteamScore: "toto"
+router.post("/save", (req, res, next) => {
+  console.log(req.body.hometeam);
+  console.log(req.body.awayteam);
+    const match = new Match({ // create new match on mongoose with schema predifinded
+        hometeam: req.body.hometeam,
+        awayteam: req.body.awayteam,
+        hometeamScore: req.body.hometeamScore,
+        awayteamScore: req.body.awayteamScore
       });
       match.save() //save match to db
         .then(result => {
@@ -23,6 +25,7 @@ router.get("/saveMatch", (req, res, next) => {
           })
         });
 });
+
 
 
 module.exports = router;
