@@ -32,12 +32,12 @@ export class MatchListComponent implements OnInit, OnDestroy {
         });
     }
 
-    favorite(home:string, away:string, date:string, color:string) {
-        console.log("home :"+home+" away :"+away+" date :"+this.dateFormat(date)+" color :"+color);
-        if(color == "warn")
-            this.favColor = "grey"
+    favorite(home:string, away:string, date:string, fav) {
+        console.log("home :"+home+" away :"+away+" date :"+this.dateFormat(date)+" color : "+fav.color);
+        if(fav.color == "warn")
+            fav.color = "grey"
         else
-            this.favColor = "warn"
+            fav.color = "warn"
         let favorite = [home,away,date];
         return favorite;
     }
