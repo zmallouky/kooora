@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
@@ -8,5 +7,4 @@ const userSchema = mongoose.Schema({
     awayteamScore: { type: String, required: true }
 });
 
-
-module.exports = mongoose.model('SavedMatch', userSchema);
+module.exports = mongoose.model('Match', userSchema);

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
-import { Subject, Observable, of  } from 'rxjs';
+import { Subject, Observable, of } from 'rxjs';
 
 import { IMatch } from './match.model';
 import { matchs } from '../../mocks/matchs';
@@ -13,6 +13,7 @@ import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class MatchService {
+
     public Date: string;
     constructor(private http: HttpClient) {
     }
@@ -52,4 +53,27 @@ export class MatchService {
                     return of([]);
             }));
     }
+
+  saveMatch(hometeam: string, awayteam: string, hometeamScore, awayteamScore: string) {
+    const matchSaved = { hometeam: hometeam, awayteam: awayteam, hometeamScore: hometeamScore, awayteamScore: awayteamScore };
+    this.http.post("http://localhost:3000/api/match/save", matchSaved)
+      .subscribe(response => {
+        console.log(response);
+      });
+  }
+
+  getsavedMatch(): Observable<IMatch[]> {
+    return this.http.get("http://localhost:3000/api/match/")
+      .pipe(map((apiMatchs: any) =>
+      apiMatchs.map((apiMatch) => {
+          let appMatch: IMatch = {
+            hometeam: apiMatch.hometeam,
+            awayteam: apiMatch.awayteam,
+            hometeamScore: apiMatch.hometeamScore,
+            awayteamScore: apiMatch.awayteamScore
+          };
+          return appMatch;
+        })
+      ));
+  }
 }

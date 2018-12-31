@@ -1,0 +1,14 @@
+<mat-accordion multi="true" *ngIf="matchs.length>0">
+    <mat-expansion-panel *ngFor="let matchs of matchs">
+      <mat-expansion-panel-header (dblclick)="doubleClick()">
+        {{matchs}} 
+      </mat-expansion-panel-header>
+      {{matchs}}
+      <mat-action-row>
+        <button    mat-icon-button>
+          <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <p *ngIf="matchs.length<0">No favorite add</p>
