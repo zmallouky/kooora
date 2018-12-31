@@ -6,7 +6,7 @@ import { Subject, Observable, of  } from 'rxjs';
 import { IMatch } from './match.model';
 import { matchs } from '../../mocks/matchs';
 
-import { flatMap, map } from 'rxjs/operators';
+import { flatMap, map, catchError } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 
@@ -47,7 +47,9 @@ export class MatchService {
                     };
                     return appMatch;
                 })
-            ));
-
+            ), catchError((error:any, caught: Observable<IMatch[]>) => {
+                    console.log("no match for")
+                    return of([]);
+            }));
     }
 }
