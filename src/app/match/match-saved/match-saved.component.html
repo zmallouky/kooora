@@ -1,9 +1,9 @@
 <mat-accordion multi="true" *ngIf="matchs.length>0">
     <mat-expansion-panel *ngFor="let matchs of matchs">
       <mat-expansion-panel-header (dblclick)="doubleClick()">
-        {{matchs}} 
+        {{matchs.hometeam}} - {{matchs.awayteam}} 
       </mat-expansion-panel-header>
-      {{matchs}}
+      {{matchs.hometeamScore}} - {{matchs.awayteamScore}}
       <mat-action-row>
         <button    mat-icon-button>
           <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>

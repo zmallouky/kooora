@@ -21,7 +21,7 @@ export class MatchService {
 
     // Service message commands
     announceDate(date: string) {
-        console.log("Emitter: "+date);
+        console.log("Emitter: " + date);
         this.Date = date;
     }
 
@@ -48,32 +48,35 @@ export class MatchService {
                     };
                     return appMatch;
                 })
-            ), catchError((error:any, caught: Observable<IMatch[]>) => {
-                    console.log("no match for")
-                    return of([]);
+            ), catchError((error: any, caught: Observable<IMatch[]>) => {
+                console.log("no match for")
+                return of([]);
             }));
     }
 
-  saveMatch(hometeam: string, awayteam: string, hometeamScore, awayteamScore: string) {
-    const matchSaved = { hometeam: hometeam, awayteam: awayteam, hometeamScore: hometeamScore, awayteamScore: awayteamScore };
-    this.http.post("http://localhost:3000/api/match/save", matchSaved)
-      .subscribe(response => {
-        console.log(response);
-      });
-  }
+    saveMatch(hometeam: string, awayteam: string, hometeamScore, awayteamScore: string) {
+        const matchSaved = { hometeam: hometeam, awayteam: awayteam, hometeamScore: hometeamScore, awayteamScore: awayteamScore };
+        this.http.post("http://localhost:3000/api/match/save", matchSaved)
+            .subscribe(response => {
+                console.log(response);
+            });
+    }
 
-  getsavedMatch(): Observable<IMatch[]> {
-    return this.http.get("http://localhost:3000/api/match/")
-      .pipe(map((apiMatchs: any) =>
-      apiMatchs.map((apiMatch) => {
-          let appMatch: IMatch = {
-            hometeam: apiMatch.hometeam,
-            awayteam: apiMatch.awayteam,
-            hometeamScore: apiMatch.hometeamScore,
-            awayteamScore: apiMatch.awayteamScore
-          };
-          return appMatch;
-        })
-      ));
-  }
+    getsavedMatch(): Observable<IMatch[]> {
+        return this.http.get("http://localhost:3000/api/match/")
+            .pipe(map((apiMatchs: any) =>
+                apiMatchs.map((apiMatch) => {
+                    let appMatch: IMatch = {
+                        hometeam: apiMatch.hometeam,
+                        awayteam: apiMatch.awayteam,
+                        hometeamScore: apiMatch.hometeamScore,
+                        awayteamScore: apiMatch.awayteamScore
+                    };
+                    return appMatch;
+                })
+            ), catchError((error: any, caught: Observable<IMatch[]>) => {
+                console.log("no favorite for")
+                return of([]);
+            }));
+    }
 }

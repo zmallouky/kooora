@@ -29,10 +29,11 @@ router.post("/save", (req, res, next) => {
 router.get("", (req, res, next) => {
   Match.find().then(documents => {
     //console.log(documents);
-    res.status(201).json({ 
+    res.status(201).json(documents
+      /*{ 
       message: 'fetched succesfully',
       savedMatch: documents
-    })
+    }*/)
   });
 });
 
