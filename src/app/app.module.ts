@@ -31,12 +31,14 @@ import { RankingComponent } from './ranking/ranking.component';
 import { TestMatTableComponent } from './test-mat-table/test-mat-table.component';
 import { LoginComponent } from './auth//login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { MatchSavedComponent } from './match/match-saved/match-saved.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MatchListComponent,
+    MatchSavedComponent,
     RankingComponent,
     TestMatTableComponent,
     LoginComponent,

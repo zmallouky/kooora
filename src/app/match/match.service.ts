@@ -22,13 +22,6 @@ export class MatchService {
     console.log("Emitter: " + date);
     this.Date = date;
   }
-  saveMatch(hometeam: string, awayteam: string, hometeamScore, awayteamScore: string) {
-    const matchSaved = { hometeam: hometeam, awayteam: awayteam, hometeamScore: hometeamScore, awayteamScore: awayteamScore };
-    this.http.post("http://localhost:3000/api/match/save", matchSaved)
-      .subscribe(response => {
-        console.log(response);
-      });
-  }
 
   getMatchs(): Observable<IMatch[]> {
     //let matchsObservable:Observable<any> = of(matchs);
@@ -50,6 +43,29 @@ export class MatchService {
             awayteam: apiMatch.match_awayteam_name,
             hometeamScore: apiMatch.match_hometeam_score,
             awayteamScore: apiMatch.match_awayteam_score
+          };
+          return appMatch;
+        })
+      ));
+  }
+
+  saveMatch(hometeam: string, awayteam: string, hometeamScore, awayteamScore: string) {
+    const matchSaved = { hometeam: hometeam, awayteam: awayteam, hometeamScore: hometeamScore, awayteamScore: awayteamScore };
+    this.http.post("http://localhost:3000/api/match/save", matchSaved)
+      .subscribe(response => {
+        console.log(response);
+      });
+  }
+
+  getsavedMatch(): Observable<IMatch[]> {
+    return this.http.get("http://localhost:3000/api/match/")
+      .pipe(map((apiMatchs: any) =>
+      apiMatchs.map((apiMatch) => {
+          let appMatch: IMatch = {
+            hometeam: apiMatch.hometeam,
+            awayteam: apiMatch.awayteam,
+            hometeamScore: apiMatch.hometeamScore,
+            awayteamScore: apiMatch.awayteamScore
           };
           return appMatch;
         })
