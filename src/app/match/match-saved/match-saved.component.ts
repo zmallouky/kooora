@@ -20,8 +20,8 @@ export class MatchSavedComponent implements OnInit {
         this.matchServiceSubscribtion = this.postService.getsavedMatch().subscribe((matchs: any[]) => {
             console.log("retour service=>" + matchs);
             this.matchs = matchs;
-          });
-}
+        });
+    }
 }
 
 

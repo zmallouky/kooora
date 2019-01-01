@@ -1,11 +1,11 @@
 const express = require("express");
 const Match = require("../db/match");
 
+const checkAuth = require("../middleware/check-auth");
+
 const router = express.Router()
 // save match 
-router.post("/save", (req, res, next) => {
-  console.log(req.body.hometeam);
-  console.log(req.body.awayteam);
+router.post("/save", checkAuth, (req, res, next) => {
   const match = new Match({ // create new match on mongoose with schema predifinded
     hometeam: req.body.hometeam,
     awayteam: req.body.awayteam,
@@ -26,7 +26,7 @@ router.post("/save", (req, res, next) => {
     });
 });
 //list all saved match
-router.get("", (req, res, next) => {
+router.get("", checkAuth, (req, res, next) => {
   Match.find().then(documents => {
     //console.log(documents);
     res.status(201).json(documents
