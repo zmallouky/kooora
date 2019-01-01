@@ -10,7 +10,8 @@ router.post("/save", checkAuth, (req, res, next) => {
     hometeam: req.body.hometeam,
     awayteam: req.body.awayteam,
     hometeamScore: req.body.hometeamScore,
-    awayteamScore: req.body.awayteamScore
+    awayteamScore: req.body.awayteamScore,
+    creator: req.userData.userId
   });
   match.save() //save match to db
     .then(result => {
@@ -27,7 +28,7 @@ router.post("/save", checkAuth, (req, res, next) => {
 });
 //list all saved match
 router.get("", checkAuth, (req, res, next) => {
-  Match.find().then(documents => {
+  Match.find({ creator: req.userData.userId }).then(documents => {
     //console.log(documents);
     res.status(201).json(documents
       /*{ 

@@ -62,15 +62,16 @@ export class MatchService {
       });
   }
 
-  getsavedMatch(): Observable<IMatch[]> {
+  getsavedMatch(): Observable<any> {
     return this.http.get("http://localhost:3000/api/match/")
       .pipe(map((apiMatchs: any) =>
         apiMatchs.map((apiMatch) => {
-          let appMatch: IMatch = {
+          let appMatch: any = {
             hometeam: apiMatch.hometeam,
             awayteam: apiMatch.awayteam,
             hometeamScore: apiMatch.hometeamScore,
-            awayteamScore: apiMatch.awayteamScore
+            awayteamScore: apiMatch.awayteamScore,
+            creator: apiMatch.creator
           };
           return appMatch;
         })
