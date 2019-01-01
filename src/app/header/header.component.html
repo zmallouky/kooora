@@ -2,8 +2,8 @@
     <button mat-icon-button (click)="snav.toggle()">
         <mat-icon>menu</mat-icon>
     </button>
-    
-    <a mat-button  routerLink="/" routerLinkActive="mat-accent">Home</a>
+
+    <a mat-button routerLink="/" routerLinkActive="mat-accent">Home</a>
     <button mat-button [matMenuTriggerFor]="leagues">Leagues</button>
     <button mat-button>Predictor</button>
     <button mat-button>Live Score</button>
@@ -13,7 +13,7 @@
     </mat-menu>
 
     <mat-menu #spanish="matMenu">
-        <a mat-menu-item  routerLink="/ligaRank" routerLinkActive="mat-accent"> Ranking</a>
+        <a mat-menu-item routerLink="/ligaRank" routerLinkActive="mat-accent"> Ranking</a>
         <button mat-menu-item>Today's matches</button>
     </mat-menu>
 
@@ -23,16 +23,18 @@
     </mat-menu>
     <span class="spacer"></span>
     <ul>
-        <li>
-            <a mat-button  routerLink="/login" routerLinkActive="mat-accent">Login</a> 
+        <li *ngIf="userIsAuthenticated">
+            <a mat-button routerLink="/favorite" routerLinkActive="mat-accent">favorite</a>
         </li>
-        <li>
-            <a mat-button  routerLink="/signup" routerLinkActive="mat-accent">Register</a> 
+        <li *ngIf="!userIsAuthenticated">
+            <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Register</a>
         </li>
-        <li>
-            <a mat-button  routerLink="/favorite" routerLinkActive="mat-accent">favorite</a> 
+        <li *ngIf="!userIsAuthenticated">
+            <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
         </li>
+        <li *ngIf="userIsAuthenticated">
+            <button mat-button>Logout</button>
+        </li>
+
     </ul>
 </mat-toolbar>
-
-
