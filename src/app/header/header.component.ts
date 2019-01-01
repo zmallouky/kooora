@@ -30,6 +30,10 @@ export class HeaderComponent implements OnDestroy, OnInit {
     });
   }
 
+  onLogout() {
+    this.authService.logout();
+  }
+
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
     this.authListenerSubs.unsubscribe();

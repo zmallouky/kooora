@@ -11,10 +11,10 @@
     </mat-expansion-panel-header>
     {{match.hometeamScore}} - {{match.awayteamScore}}
     <mat-action-row>
-      <button #fav (click)="favorite(match.hometeam, match.awayteam, match.hometeamScore,
+      <button *ngIf="userIsAutenticated" #fav (click)="favorite(match.hometeam, match.awayteam, match.hometeamScore,
              match.awayteamScore, date.value, fav)"
         mat-icon-button>
-        <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+        <mat-icon  aria-label="Example icon-button with a heart icon" >favorite</mat-icon>
       </button>
     </mat-action-row>
   </mat-expansion-panel>

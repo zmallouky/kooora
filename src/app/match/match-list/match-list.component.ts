@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { MatchService } from '../match.service';
 import { IMatch } from '../match.model';
+import { AuthService } from 'src/app/auth/auth.service';
 
 
 @Component({
@@ -19,9 +20,10 @@ export class MatchListComponent implements OnInit, OnDestroy {
   matchs: IMatch[] = [];
   matchServiceSubscribtion: Subscription;
   favColor = "warn";
+  public userIsAutenticated = false;
+  private authStatusSub: Subscription;
 
-
-  constructor(public postService: MatchService) {
+  constructor(public postService: MatchService, private authService: AuthService) {
     this.postService.Date = this.dateFormat(this.Date.toLocaleDateString());
   };
 
@@ -29,6 +31,10 @@ export class MatchListComponent implements OnInit, OnDestroy {
     this.matchServiceSubscribtion = this.postService.getMatchs().subscribe((matchs: any[]) => {
       console.log("retour service=>" + matchs);
       this.matchs = matchs;
+    });
+    this.userIsAutenticated = this.authService.getIsAuth(); // resolving issue when we dont show button even iw we loog at the first time
+    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(isAutenticated => {
+      this.userIsAutenticated = isAutenticated;
     });
   }
 
@@ -73,5 +79,6 @@ export class MatchListComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     this.matchServiceSubscribtion.unsubscribe();
+    this.authStatusSub.unsubscribe();
   }
 }
