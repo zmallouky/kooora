@@ -25,6 +25,7 @@ export class HeaderComponent implements OnDestroy, OnInit {
 
   }
   ngOnInit() {
+    this.userIsAuthenticated = this.authService.getIsAuth(); //check if we are are loggin so we won't loggin before than we enter login forms
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       this.userIsAuthenticated = isAuthenticated;
     });
