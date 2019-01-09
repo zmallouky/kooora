@@ -21,7 +21,7 @@ export class RankingService {
         // TODO uncomment to use real service call
         //this.http.get<{message: string, posts: any}>('http://localhost:3000/api/posts')
         //this.http.get(footballApi)
-        console.log("league ==> "+idLeague);
+        //console.log("league ==> "+idLeague);
         let params = new HttpParams()
         .set('action', 'get_standings')
         .set('league_id', idLeague)

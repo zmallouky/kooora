@@ -46,6 +46,11 @@ export class HeaderComponent implements OnDestroy, OnInit {
     this.router.navigate(['/ligaRank', league]);
   }
 
+  getMatchLeague(league){
+    console.log("clicked"+league);
+    this.router.navigate(['/todayMatch', league]);
+  }
+
   onLogout() {
     this.authService.logout();
   }
