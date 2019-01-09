@@ -1,25 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Subject, Observable } from 'rxjs';
 
 import { IRanking } from './ranking.model';
 import { ranking } from '../../mocks/ranking';
 import { of } from 'rxjs';
-import { flatMap,map } from 'rxjs/operators';
-//import { footballApi } from '../../environments/environment';
+import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
+import { matchs } from '../../mocks/matchs';
 
 @Injectable({providedIn: 'root'})
 export class RankingService {
-    
-    constructor(private http: HttpClient) {}
+    topScorer = {};
 
-    getRanking(): Observable<IRanking[]> {
-        let matchsObservable:Observable<any> = of(ranking);
+    constructor(private http: HttpClient) {
+    }
+
+    getRanking(idLeague:string): Observable<IRanking[]> {
+        //let matchsObservable:Observable<any> = of(ranking);
         // TODO uncomment to use real service call
         //this.http.get<{message: string, posts: any}>('http://localhost:3000/api/posts')
         //this.http.get(footballApi)
-        return matchsObservable
+        console.log("league ==> "+idLeague);
+        let params = new HttpParams()
+        .set('action', 'get_standings')
+        .set('league_id', idLeague)
+        .set('APIkey', '66869ef860f058236e75d7466b804e053882c52a10c152f3111bef56e5463c4a');
+        //return matchsObservable
+        return this.http.get(environment.footballApi, {params})
         .pipe(map((apiRanking:any) => 
                     apiRanking.map((apiRanking)=> {
                      let appRanking:IRanking = {
@@ -35,7 +43,33 @@ export class RankingService {
                     };
                     return appRanking;
                 })   
-        ));
+        ),
+        map((teams:IRanking[])=> teams.sort((r1:IRanking, r2:IRanking) => {
+            if(Number(r1.position) < Number(r2.position)) return -1;
+            if(Number(r1.position) > Number(r2.position)) return 1;
+            return 0;
+          })));
 
+    }
+
+    getScorersRanking(): Observable<any> {
+        let matchObservable:Observable<any> = of(matchs);
+        return matchObservable.pipe(
+            map((matchs:any[]) => 
+                matchs.map((match)=> {
+                     match.goalscorer.map((goalscorer)=> {
+                       let player = goalscorer.home_scorer.concat(goalscorer.away_scorer);
+                       
+                        if( this.topScorer[player] == undefined)
+                            this.topScorer[player] = 1;
+                        else
+                            this.topScorer[player]++;
+                       // console.log(player+" : "+this.topScorer[player]);
+                        return this.topScorer;
+                    })
+                    return this.topScorer;
+                 }))
+            );
+        
     }
 }

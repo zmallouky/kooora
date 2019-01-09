@@ -10,15 +10,21 @@
     <mat-menu #leagues="matMenu">
         <button mat-menu-item [matMenuTriggerFor]="spanish">Liga BBVA</button>
         <button mat-menu-item [matMenuTriggerFor]="french">Ligue 1</button>
+        <button mat-menu-item [matMenuTriggerFor]="england">Premier League</button>
     </mat-menu>
 
     <mat-menu #spanish="matMenu">
-        <a mat-menu-item routerLink="/ligaRank" routerLinkActive="mat-accent"> Ranking</a>
+        <a mat-menu-item routerLink="/ligaRank" routerLinkActive="mat-accent" (click)="getLeague(109)"> Ranking</a>
         <button mat-menu-item>Today's matches</button>
     </mat-menu>
 
     <mat-menu #french="matMenu">
-        <button mat-menu-item>Ranking</button>
+        <a mat-menu-item routerLink="/ligaRank" routerLinkActive="mat-accent" (click)="getLeague(127)">Ranking</a>
+        <button mat-menu-item>Today's matches</button>
+    </mat-menu>
+
+    <mat-menu #england="matMenu">
+        <a mat-menu-item routerLink="/ligaRank" routerLinkActive="mat-accent" (click)="getLeague(62)">Ranking</a>
         <button mat-menu-item>Today's matches</button>
     </mat-menu>
     <span class="spacer"></span>
