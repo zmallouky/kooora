@@ -14,6 +14,7 @@ import { environment } from '../../environments/environment';
 @Injectable({ providedIn: 'root' })
 export class MatchService {
   public Date: string;
+  private savedMatch: any[] = [];
   constructor(private http: HttpClient) {
   }
 
@@ -40,7 +41,7 @@ export class MatchService {
     headers = headers.append('Access-Control-Allow-Headers', 'Authorization ')
       .append('Authorization','Bearer ');*/
     return this.http.
-      get(environment.footballApi, {params})
+      get(environment.footballApi, { params })
       .pipe(map((apiMatchs: any) =>
         apiMatchs.map((apiMatch) => {
           let appMatch: IMatch = {
@@ -67,14 +68,27 @@ export class MatchService {
       .pipe(map((apiMatchs: any) =>
         apiMatchs.map((apiMatch) => {
           let appMatch: any = {
+            id: apiMatch._id,
             hometeam: apiMatch.hometeam,
             awayteam: apiMatch.awayteam,
             hometeamScore: apiMatch.hometeamScore,
             awayteamScore: apiMatch.awayteamScore,
             creator: apiMatch.creator
           };
+          this.savedMatch.push(appMatch);
           return appMatch;
         })
       ));
+  }
+
+
+
+  deleteMatch(matchId: string) {
+    this.http.delete("http://localhost:3000/api/match/delete/" + matchId)
+      .subscribe(() => {
+        let match = this.getsavedMatch();
+        const updatedMatchs = this.savedMatch.filter(match => match.id !== matchId);
+        this.savedMatch = updatedMatchs;
+      })
   }
 }

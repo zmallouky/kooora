@@ -38,6 +38,14 @@ router.get("", checkAuth, (req, res, next) => {
   });
 });
 
+//delete saved match
+router.delete("/delete/:id", (req, res, next) => {
+  Match.deleteOne({ _id: req.params.id }).then(result => {
+    console.log(result);
+    res.status(200).json({ message: "match deleted" });
+  }); 
+});
+
 
 module.exports = router;
 

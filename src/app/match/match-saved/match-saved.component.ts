@@ -22,6 +22,9 @@ export class MatchSavedComponent implements OnInit {
             this.matchs = matchs;
         });
     }
+    onDelete(matchId: string) {
+        this.postService.deleteMatch(matchId);
+    }
 }
 
 
