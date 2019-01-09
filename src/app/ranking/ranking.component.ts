@@ -4,13 +4,9 @@ import { Subscription } from 'rxjs';
 
 import { IRanking } from './ranking.model';
 import { RankingService } from './ranking.service';
+import { Router } from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 
-var ELEMENT_DATA: IRanking[] = [
-  {position: '4', teamname: 'Beryllium', played: '12', w: '12',
-   d: '4', l: '4', gf: '4', ga: '3', pts: '13'},
-   {position: '2', teamname: 'Zeryllium', played: '13', w: '23',
-   d: '4', l: '4', gf: '2', ga: '1', pts: '15'},
-];
 
 @Component({
   selector: 'app-ranking',
@@ -20,31 +16,51 @@ var ELEMENT_DATA: IRanking[] = [
 export class RankingComponent implements OnInit, OnDestroy {
 
   rankingServiceSubscribtion: Subscription;
+  scorersSubscribtion: Subscription;
+  idLeague: string;
+  isLoading: boolean;
+  scorers: any[];
+  goals;
 
-  constructor(public rankingService: RankingService) { };
+  constructor(private rankingService: RankingService, private route: ActivatedRoute) { };
 
   displayedColumns: string[] = ['position', 'teamname', 'played', 'w',
     'd', 'l', 'gf', 'ga', 'pts'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource([]);
  
 
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    this.rankingServiceSubscribtion = this.rankingService.getRanking().subscribe((ranking: IRanking[]) => {
+    this.route.params.subscribe(params => {
+      this.isLoading = true;
+      //this.dataSource = null;
+      this.idLeague = params['league'];
+      this.rankingServiceSubscribtion = this.rankingService.getRanking(this.idLeague).subscribe((ranking: IRanking[]) => {
+          this.dataSource = new MatTableDataSource(ranking);
+          this.dataSource.sort = this.sort;
+          this.isLoading = false;
+      });
+      this.scorersSubscribtion = this.rankingService.getScorersRanking().subscribe( (scorers:any[]) => {
+       
+       let scorer = scorers[0];
+       this.goals = scorer;
+        this.scorers = Object.keys(scorers[0]);
 
-      //console.log("retour service=>" + ranking);
-      //ranking.forEach(ranking => console.log(ranking));
-      ELEMENT_DATA = ranking;
-      
-      //console.log("dataSource=>" + this.dataSource.data);
-      //this.dataSource.sort = this.sort;
-    });
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-    this.dataSource.sort = this.sort;
+        console.log(this.scorers[0] +" "+scorer[this.scorers[0]]);
+        
+        
+        
+        
+        
+      })
+    })
   }
 
+
   ngOnDestroy() {
+    console.log('component rankingService destroyed');
     this.rankingServiceSubscribtion.unsubscribe();
+    this.dataSource = null;
   }
 }

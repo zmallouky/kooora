@@ -1,3 +1,4 @@
+
 <table mat-table *ngIf="dataSource" [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
   <!-- Position Column -->
@@ -56,4 +57,11 @@
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<table>
+
+  <tr *ngFor="let scorer of scorers">
+    {{scorer}} : {{goals[scorer]}}
+  </tr>
 </table>
