@@ -22,7 +22,7 @@ router.post("/save", checkAuth, (req, res, next) => {
     })
     .catch(err => { // failed to save match 
       res.status(500).json({
-        error: err
+        message: "failed to save match"
       })
     });
 });
@@ -35,6 +35,10 @@ router.get("", checkAuth, (req, res, next) => {
       message: 'fetched succesfully',
       savedMatch: documents
     }*/)
+  }).catch(error => {
+    res.status(500).json({
+      message: "failed to get favorite match"
+    })
   });
 });
 
@@ -43,7 +47,12 @@ router.delete("/delete/:id", (req, res, next) => {
   Match.deleteOne({ _id: req.params.id }).then(result => {
     console.log(result);
     res.status(200).json({ message: "match deleted" });
-  }); 
+  })
+    .catch(error => {
+      res.status(500).json({
+        message: "failed to delte the match"
+      })
+    });
 });
 
 

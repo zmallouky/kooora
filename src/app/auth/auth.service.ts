@@ -33,8 +33,11 @@ export class AuthService {
     this.http.post("http://localhost:3000/api/user/signp", authData)
       .subscribe(response => { // response that we are listening on from the emit
         console.log(response); //show the new user create on backend/user.js
+        this.router.navigate(['/login']);
+        alert('user created');
+      }, error => {
+        this.authStatusListener.next(false);
       });
-    this.router.navigate(['/login']);
   }
 
   // function connecting a user with email and pwd set into login form
@@ -57,6 +60,8 @@ export class AuthService {
           this.saveAuthData(token, expirationDate); //save on borwser storage to use it when we reload
           this.router.navigate(['/']);
         }
+      }, error => {
+        this.authStatusListener.next(false);
       });
   }
 
@@ -70,7 +75,7 @@ export class AuthService {
   }
 
   private setAuthTimer(duration: number) { // declenche the timer
-    console.log("setting timer : "+ duration);
+    console.log("setting timer : " + duration);
     this.tokenTimer = setTimeout(() => {
       this.logout(); // logout on 1h
     }, duration * 1000); // sec to ms
@@ -88,8 +93,8 @@ export class AuthService {
 
   autoAuthUser() { //authentifacte user from local storage lanched automoaticly on app componenet
     const authInformation = this.getAuthData();
-    if(!authInformation) { // if we are not login no need to continue
-      return;   
+    if (!authInformation) { // if we are not login no need to continue
+      return;
     }
     const now = new Date();
     const expiresIn = authInformation.expirationDate.getTime() - now.getTime(); // get left time on ms for the token expiration

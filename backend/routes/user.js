@@ -22,7 +22,7 @@ router.post("/signp", (req, res, next) => {
         })
         .catch(err => { // failed to save user 
           res.status(500).json({
-            error: err
+            message: 'Already registred with this email'
           })
         });
     });
@@ -34,7 +34,7 @@ router.post("/login", (req, res, next) => {
     .then(user => { // this promise take the previous value (object user from db)
       if (!user) { // email not found on mongoose
         return res.status(401).json({
-          message: "Auth failed!"
+          message: "Invalid authentifications inputs!"
         });
       }
       fetchedUser = user;
@@ -43,7 +43,7 @@ router.post("/login", (req, res, next) => {
     .then(result => { // result contains the bool of the previous compraison
       if (!result) { //user found but password enter is inccorect
         return res.status(401).json({
-          message: "Auth failed!"
+          message: "Invalid authentifications inputs"
         });
       }
       // create token
@@ -59,7 +59,7 @@ router.post("/login", (req, res, next) => {
     .catch(err => { // catch any other error happened will auth
       console.log(err);
       return res.status(401).json({
-        message: "Auth failed!"
+        message: "unknown error"
       });
     });
 });
