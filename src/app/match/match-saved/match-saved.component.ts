@@ -23,7 +23,12 @@ export class MatchSavedComponent implements OnInit {
         });
     }
     onDelete(matchId: string) {
+        console.log("match deleted");
         this.postService.deleteMatch(matchId);
+        this.matchServiceSubscribtion = this.postService.getsavedMatch().subscribe((matchs: any[]) => {
+            console.log("retour service=>" + matchs);
+            this.matchs = matchs;
+        });
     }
 }
 
