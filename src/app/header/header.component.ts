@@ -3,6 +3,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef } from '@angular/core';
 import { RankingService } from '../ranking/ranking.service';
 import { RankingComponent } from '../ranking/ranking.component';
+import { MatchListComponent } from '../match/match-list/match-list.component';
 import { AuthService } from '../auth/auth.service';
 import { Subscription } from 'rxjs';
 import { Router } from "@angular/router";
@@ -17,6 +18,7 @@ export class HeaderComponent implements OnDestroy, OnInit {
   mobileQuery: MediaQueryList;
   rankingServiceSubscribtion: Subscription;
   rankingComponent: RankingComponent;
+  //public matchlist:MatchListComponent;
   leagues:any[];
 
   fillerNav = Array.from({ length: 5 }, (_, i) => `Nav Item ${i + 1}`);
@@ -47,6 +49,8 @@ export class HeaderComponent implements OnDestroy, OnInit {
   }
 
   getMatchLeague(league){
+    
+    //this.matchlist.renitializeData();
     console.log("clicked"+league);
     this.router.navigate(['/todayMatch', league]);
   }

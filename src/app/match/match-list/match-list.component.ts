@@ -26,22 +26,25 @@ export class MatchListComponent implements OnInit, OnDestroy {
 
   constructor(public postService: MatchService, private authService: AuthService,
     private route: ActivatedRoute) {
-    this.postService.Date = this.dateFormat(this.Date.toLocaleDateString());
   };
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.idLeague = params['league'];
-    })
-    this.matchServiceSubscribtion = this.postService.getMatchs(this.route.params).subscribe((matchs: any[]) => {
-      console.log("retour service=>" + matchs);
-      this.matchs = matchs;
-    });
-  
+    this.matchs = [];
+    console.log("je suis dans le ngOnInit");
     this.userIsAutenticated = this.authService.getIsAuth(); // resolving issue when we dont show button even iw we loog at the first time
     this.authStatusSub = this.authService.getAuthStatusListener().subscribe(isAutenticated => {
       this.userIsAutenticated = isAutenticated;
     });
+    this.route.params.subscribe(params => {
+      this.idLeague = params['league'];
+      let today = this.dateFormat(new Date().toLocaleDateString());
+      this.matchServiceSubscribtion = this.postService.getMatchs(this.idLeague, today).subscribe((matchs: any[]) => {
+        console.log("retour service=>" + matchs);
+        this.matchs = matchs;
+      });
+    });
+    
+  
 
   }
 
@@ -68,26 +71,27 @@ export class MatchListComponent implements OnInit, OnDestroy {
   }
 
   getDate(param: string) {
-    this.route.params.subscribe(params => {
-      this.idLeague = params['league'];
-    })
-    this.postService.Date = this.dateFormat(param);
-    this.postService.announceDate(this.postService.Date);
-    this.matchServiceSubscribtion = this.postService.getMatchs(this.idLeague).subscribe((matchs: any[]) => {
+    this.matchs = [];
+    let date = this.dateFormat(param);
+    this.matchServiceSubscribtion = this.postService.getMatchs(this.idLeague, date).subscribe((matchs: any[]) => {
       console.log("retour service=>" + matchs);
       this.matchs = matchs;
     });
-    return this.postService.Date;
-
   }
   getsavedMatch() {
     return this.postService.getsavedMatch();
+  }
+
+  renitializeData(){
+    console.log("renitialized data!");
+    this.matchs = [];
   }
 
   doubleClick() {
     console.log("double click")
   }
   ngOnDestroy() {
+    this.matchs = [];
     this.matchServiceSubscribtion.unsubscribe();
     this.authStatusSub.unsubscribe();
   }

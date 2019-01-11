@@ -13,7 +13,6 @@ import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class MatchService {
-  public Date: string;
 
   private savedMatch: any[] = [];
 
@@ -22,24 +21,16 @@ export class MatchService {
   constructor(private http: HttpClient) {
   }
 
-  // Service message commands
-  announceDate(date: string) {
-    console.log("Emitter: " + date);
-    this.Date = date;
-  }
-
-  getMatchs(param:any): Observable<IMatch[]> {
+  getMatchs(idLeague:string, date:string): Observable<IMatch[]> {
     //let matchsObservable:Observable<any> = of(matchs);
     // TODO uncomment to use real service call
     //this.http.get<{message: string, posts: any}>('http://localhost:3000/api/posts')
-    param.subscribe(params => {
-       this.idLeague = params['league'];
-     })
+
     let params = new HttpParams()
       .set('action', 'get_events')
-      .set('from', this.Date)
-      .set('to', this.Date)
-      .set('league_id', this.idLeague)
+      .set('from', date)
+      .set('to', date)
+      .set('league_id', idLeague)
       .set('APIkey', '66869ef860f058236e75d7466b804e053882c52a10c152f3111bef56e5463c4a');
 
     //let matchsObservable:Observable<any> = this.http.get(environment.footballApi,{ params: params });
