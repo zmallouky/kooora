@@ -36,6 +36,7 @@ import { MatchSavedComponent } from './match/match-saved/match-saved.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
+import { SwaggerApiComponent } from './swagger-api/swagger-api.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ErrorComponent } from './error/error.component';
     TestMatTableComponent,
     LoginComponent,
     SignupComponent,
-    ErrorComponent
+    ErrorComponent,
+    SwaggerApiComponent
   ],
   imports: [
     BrowserModule,

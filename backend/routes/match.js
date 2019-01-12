@@ -50,7 +50,7 @@ router.delete("/delete/:id", (req, res, next) => {
   })
     .catch(error => {
       res.status(500).json({
-        message: "failed to delte the match"
+        message: "failed to delete the match"
       })
     });
 });

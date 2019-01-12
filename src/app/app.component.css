@@ -4,3 +4,15 @@ main {
     margin: auto;
    
 }
+.head{
+    position: fixed;
+  top: 0;
+  width: 100%;
+}
+.content {
+    padding: 16px;
+
+}
+.head + .content {
+    padding-top: 102px;
+  }
