@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  footballApi: 'https://apifootball.com/api/'
+  footballApi: 'https://apifootball.com/api/',
+  authApi: 'http://localhost:3000/api/'
 };
 
 /*

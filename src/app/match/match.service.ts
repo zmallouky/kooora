@@ -55,14 +55,14 @@ export class MatchService {
 
   saveMatch(hometeam: string, awayteam: string, hometeamScore, awayteamScore: string) {
     const matchSaved = { hometeam: hometeam, awayteam: awayteam, hometeamScore: hometeamScore, awayteamScore: awayteamScore };
-    this.http.post("http://localhost:3000/api/match/save", matchSaved)
+    this.http.post(environment.authApi+"match/save", matchSaved)
       .subscribe(response => {
         console.log(response);
       });
   }
 
   getsavedMatch(): Observable<any> {
-    return this.http.get("http://localhost:3000/api/match/")
+    return this.http.get(environment.authApi+"match/")
       .pipe(map((apiMatchs: any) =>
         apiMatchs.map((apiMatch) => {
           let appMatch: any = {
@@ -82,7 +82,7 @@ export class MatchService {
 
 
   deleteMatch(matchId: string) {
-    this.http.delete("http://localhost:3000/api/match/delete/" + matchId)
+    this.http.delete(environment.authApi+"match/delete/" + matchId)
       .subscribe(() => {
         let match = this.getsavedMatch();
         const updatedMatchs = this.savedMatch.filter(match => match.id !== matchId);
