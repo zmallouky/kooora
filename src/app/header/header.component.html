@@ -19,6 +19,7 @@
     <button *ngIf="!userIsAuthenticated" mat-menu-item routerLink="/signup" routerLinkActive="mat-accent"><mat-icon>person_add</mat-icon></button>
     <button *ngIf="!userIsAuthenticated" mat-menu-item routerLink="/login" routerLinkActive="mat-accent"><mat-icon>person</mat-icon></button>
     <button *ngIf="userIsAuthenticated" mat-menu-item (click)="onLogout()"><mat-icon>person_outline</mat-icon></button>-->
+    <button *ngIf="userIsAuthenticated" mat-menu-item routerLink="/favorite" routerLinkActive="mat-accent"><img src="assets/star.png" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FAVORITE</button>
 </mat-menu>
    <!-- <button mat-button routerLink="/swaggerApi" routerLinkActive="mat-accent">Swagger API</button>-->
     <mat-menu #leagues="matMenu">
@@ -43,7 +44,9 @@
     </mat-menu>
      
 <span class="spacer"></span>
+
 <button *ngIf="userIsAuthenticated" mat-button (click)="onLogout()"><img src="assets/exit.png"></button>   
+<button *ngIf="!userIsAuthenticated" mat-button routerLink="/signup" routerLinkActive="mat-accent"><img src="assets/signup.png"></button>
 <button *ngIf="!userIsAuthenticated" mat-button routerLink="/login" routerLinkActive="mat-accent"> <img src="assets/login.png"></button>
 
 <!--<ul>
