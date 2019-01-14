@@ -41,7 +41,7 @@ export class RankingComponent implements OnInit, OnDestroy {
           this.dataSource.sort = this.sort;
           this.isLoading = false;
       });
-      this.scorersSubscribtion = this.rankingService.getScorersRanking().subscribe( (scorers:any[]) => {
+      this.scorersSubscribtion = this.rankingService.getScorersRanking(this.idLeague).subscribe( (scorers:any[]) => {
        
        let scorer = scorers[0];
        this.goals = scorer;

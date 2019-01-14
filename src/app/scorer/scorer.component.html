@@ -1,0 +1,31 @@
+
+<table mat-table  [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="player">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Position </th>
+    <td mat-cell *matCellDef="let element"> {{element.player}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="goals">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Goals </th>
+    <td mat-cell *matCellDef="let element"> {{element.goals}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="teamname">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Team </th>
+    <td mat-cell *matCellDef="let element"> {{element.teamname}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<!--<table>
+
+  <tr *ngFor="let scorer of scorers">
+    {{scorer}} : {{goals[scorer]}}
+  </tr>
+</table>-->

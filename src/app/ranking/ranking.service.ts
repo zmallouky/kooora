@@ -8,6 +8,7 @@ import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { matchs } from '../../mocks/matchs';
+import { IScorer } from '../scorer/scorer.model';
 
 @Injectable({providedIn: 'root'})
 export class RankingService {
@@ -25,7 +26,7 @@ export class RankingService {
         let params = new HttpParams()
         .set('action', 'get_standings')
         .set('league_id', idLeague)
-        .set('APIkey', '66869ef860f058236e75d7466b804e053882c52a10c152f3111bef56e5463c4a');
+        .set('APIkey', '04f3c7e3a2e8e0eb93efad3ca8a2b647229b9afb6ec4a4f56ad5229623f52158');
         //return matchsObservable
         return this.http.get(environment.footballApi, {params})
         .pipe(map((apiRanking:any) => 
@@ -52,9 +53,17 @@ export class RankingService {
 
     }
 
-    getScorersRanking(): Observable<any> {
-        let matchObservable:Observable<any> = of(matchs);
-        return matchObservable.pipe(
+    getScorersRanking(idLeague:string): Observable<IScorer[]> {
+        this.topScorer = {};
+        let params = new HttpParams()
+        .set('action', 'get_events')
+        .set('from', '2018-08-01')
+        .set('to', '2019-02-01')
+        .set('league_id', idLeague)
+        .set('APIkey', '04f3c7e3a2e8e0eb93efad3ca8a2b647229b9afb6ec4a4f56ad5229623f52158');
+        //let matchObservable:Observable<any> = of(matchs);
+        return this.http.get(environment.footballApi, {params})
+            .pipe(
             map((matchs:any[]) => 
                 matchs.map((match)=> {
                      match.goalscorer.map((goalscorer)=> {

@@ -23,24 +23,27 @@
 </mat-menu>
    <!-- <button mat-button routerLink="/swaggerApi" routerLinkActive="mat-accent">Swagger API</button>-->
     <mat-menu #leagues="matMenu">
-        <button mat-menu-item [matMenuTriggerFor]="spanish">Liga BBVA</button>
-        <button mat-menu-item [matMenuTriggerFor]="french">Ligue 1</button>
-        <button mat-menu-item [matMenuTriggerFor]="england">Premier League</button>
+        <button mat-menu-item [matMenuTriggerFor]="spanish"><img src="assets/spain.png">&nbsp;&nbsp;&nbsp;Liga BBVA</button>
+        <button mat-menu-item [matMenuTriggerFor]="french"><img src="assets/france.png">&nbsp;&nbsp;&nbsp;Ligue 1</button>
+        <button mat-menu-item [matMenuTriggerFor]="england"><img src="assets/england.png">&nbsp;&nbsp;&nbsp;Premier League</button>
     </mat-menu>
 
     <mat-menu #spanish="matMenu">
-        <a mat-menu-item routerLink="/ligaRank" routerLinkActive="mat-accent" (click)="getLeague(109)"> Ranking</a>
-        <button mat-menu-item routerLink="/todayMatch" routerLinkActive="mat-accent" (click)="getMatchLeague(109)">Today's matches</button>
+        <a mat-menu-item routerLink="/ligaRank" routerLinkActive="mat-accent" (click)="getLeague(109)"><img src="assets/ranking.png">&nbsp;&nbsp;&nbsp; Ranking</a>
+        <button mat-menu-item routerLink="/todayMatch" routerLinkActive="mat-accent" (click)="getMatchLeague(109)"><img src="assets/today.png">&nbsp;&nbsp;&nbsp;Matches</button>
+        <button mat-menu-item routerLink="/scorer" routerLinkActive="mat-accent" (click)="getScorer(109)"><img src="assets/scorer.png">&nbsp;&nbsp;&nbsp;Top Scorers</button>
     </mat-menu>
 
     <mat-menu #french="matMenu">
-        <a mat-menu-item routerLink="/ligaRank" routerLinkActive="mat-accent" (click)="getLeague(127)">Ranking</a>
-        <button mat-menu-item routerLink="/todayMatch" routerLinkActive="mat-accent" (click)="getMatchLeague(127)">Today's matches</button>
+        <a mat-menu-item routerLink="/ligaRank" routerLinkActive="mat-accent" (click)="getLeague(127)"><img src="assets/ranking.png">&nbsp;&nbsp;&nbsp;Ranking</a>
+        <button mat-menu-item routerLink="/todayMatch" routerLinkActive="mat-accent" (click)="getMatchLeague(127)"><img src="assets/today.png">&nbsp;&nbsp;&nbsp;Matches</button>
+        <button mat-menu-item routerLink="/scorer" routerLinkActive="mat-accent" (click)="getScorer(127)"><img src="assets/scorer.png">&nbsp;&nbsp;&nbsp;Top Scorers</button>
     </mat-menu>
 
     <mat-menu #england="matMenu">
-        <a mat-menu-item routerLink="/ligaRank" routerLinkActive="mat-accent" (click)="getLeague(62)">Ranking</a>
-        <button mat-menu-item routerLink="/todayMatch" routerLinkActive="mat-accent" (click)="getMatchLeague(62)">Today's matches</button>
+        <a mat-menu-item routerLink="/ligaRank" routerLinkActive="mat-accent" (click)="getLeague(62)"><img src="assets/ranking.png">&nbsp;&nbsp;&nbsp;Ranking</a>
+        <button mat-menu-item routerLink="/todayMatch" routerLinkActive="mat-accent" (click)="getMatchLeague(62)"><img src="assets/today.png">&nbsp;&nbsp;&nbsp;Matches</button>
+        <button mat-menu-item routerLink="/scorer" routerLinkActive="mat-accent" (click)="getScorer(62)"><img src="assets/scorer.png">&nbsp;&nbsp;&nbsp;Top Scorers</button>
     </mat-menu>
      
 <span class="spacer"></span>
