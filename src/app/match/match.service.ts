@@ -52,6 +52,29 @@ export class MatchService {
         })
       ));
   }
+  getLiveMatchs(idLeague:string, date:string): Observable<IMatch[]> {
+
+    let params = new HttpParams()
+      .set('action', 'get_events')
+      .set('from', date)
+      .set('to', date)
+      .set('league_id', idLeague)
+      .set('match_live', '1')
+      .set('APIkey', '04f3c7e3a2e8e0eb93efad3ca8a2b647229b9afb6ec4a4f56ad5229623f52158');
+    return this.http.
+      get(environment.footballApi, { params })
+      .pipe(map((apiMatchs: any) =>
+        apiMatchs.map((apiMatch) => {
+          let appMatch: IMatch = {
+            hometeam: apiMatch.match_hometeam_name,
+            awayteam: apiMatch.match_awayteam_name,
+            hometeamScore: apiMatch.match_hometeam_score,
+            awayteamScore: apiMatch.match_awayteam_score
+          };
+          return appMatch;
+        })
+      ));
+  }
 
   saveMatch(hometeam: string, awayteam: string, hometeamScore, awayteamScore: string) {
     const matchSaved = { hometeam: hometeam, awayteam: awayteam, hometeamScore: hometeamScore, awayteamScore: awayteamScore };
