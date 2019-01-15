@@ -9,12 +9,14 @@ import { MatchSavedComponent } from './match/match-saved/match-saved.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ScorerComponent } from './scorer/scorer.component';
 import { MatchLiveComponent } from './match/match-live/match-live.component';
+import { PredictionComponent } from './prediction/prediction.component';
 
 const routes: Routes = [
   { path: '', component: MatchListComponent },
   { path: 'todayMatch/:league', component: MatchListComponent },
   { path: 'scorer/:league', component: ScorerComponent },
   { path: 'swaggerApi', component: SwaggerApiComponent },
+  { path: 'prediction', component: PredictionComponent },
   { path: 'ligaRank/:league', component: RankingComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },

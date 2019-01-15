@@ -6,3 +6,9 @@ table {
   th.mat-sort-header-sorted {
     color: black;
   }
+
+  mat-spinner{
+    position: fixed; /* or absolute */
+  top: 40%;
+  left: 40%;
+  }

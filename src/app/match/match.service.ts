@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Subject, Observable, of } from 'rxjs';
 
-import { IMatch } from './match.model';
+import { IMatch, IPrediction } from './match.model';
 import { matchs } from '../../mocks/matchs';
 
 import { flatMap, map } from 'rxjs/operators';
@@ -76,6 +76,30 @@ export class MatchService {
       ));
   }
 
+  getPredictions(idLeague:string, date:string): Observable<IPrediction[]> {
+
+    let params = new HttpParams()
+      .set('action', 'get_predictions')
+      .set('from', date)
+      .set('to', date)
+      .set('league_id', idLeague)
+      .set('APIkey', '04f3c7e3a2e8e0eb93efad3ca8a2b647229b9afb6ec4a4f56ad5229623f52158');
+    return this.http.
+      get(environment.footballApi, { params })
+      .pipe(map((apiMatchs: any) =>
+        apiMatchs.map((apiMatch) => {
+          let appMatch: IPrediction = {
+            hometeam: apiMatch.match_hometeam_name,
+            awayteam: apiMatch.match_awayteam_name,
+            prob_HW: apiMatch.prob_HW,
+            prob_D: apiMatch.prob_D,
+            prob_AW: apiMatch.prob_AW
+          };
+          return appMatch;
+        })
+      ));
+  }
+
   saveMatch(hometeam: string, awayteam: string, hometeamScore, awayteamScore: string) {
     const matchSaved = { hometeam: hometeam, awayteam: awayteam, hometeamScore: hometeamScore, awayteamScore: awayteamScore };
     this.http.post(environment.authApi+"match/save", matchSaved)
@@ -104,12 +128,7 @@ export class MatchService {
 
 
 
-  deleteMatch(matchId: string) {
-    this.http.delete(environment.authApi+"match/delete/" + matchId)
-      .subscribe(() => {
-        let match = this.getsavedMatch();
-        const updatedMatchs = this.savedMatch.filter(match => match.id !== matchId);
-        this.savedMatch = updatedMatchs;
-      })
+  deleteMatch(matchId: string) : Observable<any> {
+    return this.http.delete(environment.authApi+"match/delete/" + matchId);
   }
 }

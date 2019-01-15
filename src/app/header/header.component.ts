@@ -44,21 +44,21 @@ export class HeaderComponent implements OnDestroy, OnInit {
   }
 
   getLeague(league){
-    console.log("clicked"+league);
+    console.log("clicked getLea"+league);
     this.router.navigate(['/ligaRank', league]);
   }
 
   getMatchLeague(league){
     
     //this.matchlist.renitializeData();
-    console.log("clicked"+league);
+    console.log("clicked get match"+league);
     this.router.navigate(['/todayMatch', league]);
   }
 
   getScorer(league){
     
     //this.matchlist.renitializeData();
-    console.log("clicked"+league);
+    console.log("clicked get scorer"+league);
     this.router.navigate(['/scorer', league]);
   }
 

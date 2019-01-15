@@ -24,7 +24,7 @@ export class MatchLiveComponent implements OnInit, OnDestroy {
 
   matchServiceSubscribtion: Subscription;
 
-  constructor(public postService: MatchService, private authService: AuthService, ) { };
+  constructor(public postService: MatchService, private authService: AuthService ) { };
 
   ngOnInit() {
     this.userIsAutenticated = this.authService.getIsAuth(); // resolving issue when we dont show button even iw we loog at the first time

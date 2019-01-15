@@ -1,0 +1,16 @@
+:host {
+    display: block;
+    margin-top: 1rem;
+  }
+  mat-form-field{
+    margin-right: 0%;
+  }
+  
+  .uniform-color{
+    background-color:#0B2239;
+    
+  }
+  h6 {
+    color: floralwhite;
+  }
+  

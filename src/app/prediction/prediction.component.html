@@ -1,3 +1,9 @@
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" [(ngModel)]="Date" #date readonly placeholder="Choose day" (dateChange)="getDate(date.value)">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
 <!---Spanish live match-->
 <mat-toolbar class="uniform-color"><img src="assets/spain.png">&nbsp;&nbsp;&nbsp;<h6>Spanish League</h6></mat-toolbar>
 <mat-accordion multi="true" *ngIf="liveMatchSpain.length>0">
@@ -5,7 +11,7 @@
     <mat-expansion-panel-header (dblclick)="doubleClick()">
       {{match.hometeam}} - {{match.awayteam}}
     </mat-expansion-panel-header>
-    {{match.hometeamScore}} - {{match.awayteamScore}}
+    {{match.prob_HW}}% - {{match.prob_D}}% - {{match.prob_AW}}%
     <mat-action-row>
       <button *ngIf="userIsAutenticated" #fav (click)="favorite(match.hometeam, match.awayteam, match.hometeamScore,
              match.awayteamScore, date.value, fav)"
@@ -27,7 +33,7 @@
     <mat-expansion-panel-header (dblclick)="doubleClick()">
       {{match.hometeam}} - {{match.awayteam}}
     </mat-expansion-panel-header>
-    {{match.hometeamScore}} - {{match.awayteamScore}}
+    {{match.prob_HW}}% - {{match.prob_D}}% - {{match.prob_AW}}%
     <mat-action-row>
       <button *ngIf="userIsAutenticated" #fav (click)="favorite(match.hometeam, match.awayteam, match.hometeamScore,
              match.awayteamScore, date.value, fav)"
@@ -38,7 +44,7 @@
   </mat-expansion-panel>
 </mat-accordion>
 
-<p *ngIf="liveMatchSpain.length<=0">No live match</p>
+<p *ngIf="liveMatchEngland.length<=0">No live match</p>
 
 
 <!---france live match-->
@@ -50,7 +56,7 @@
     <mat-expansion-panel-header (dblclick)="doubleClick()">
       {{match.hometeam}} - {{match.awayteam}}
     </mat-expansion-panel-header>
-    {{match.hometeamScore}} - {{match.awayteamScore}}
+    {{match.prob_HW}}% - {{match.prob_D}}% - {{match.prob_AW}}%
     <mat-action-row>
       <button *ngIf="userIsAutenticated" #fav (click)="favorite(match.hometeam, match.awayteam, match.hometeamScore,
              match.awayteamScore, date.value, fav)"
@@ -61,4 +67,4 @@
   </mat-expansion-panel>
 </mat-accordion>
 
-<p *ngIf="liveMatchSpain.length<=0">No live match</p>
+<p *ngIf="liveMatchFrance.length<=0">No live match</p>

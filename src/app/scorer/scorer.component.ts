@@ -28,6 +28,7 @@ export class ScorerComponent implements OnInit {
   scorersSubscribtion: Subscription;
   scorers: any[];
   goals;
+  isLoading: boolean;
   idLeague;
   tabScorer: IScorer[] = [];
 
@@ -42,12 +43,15 @@ export class ScorerComponent implements OnInit {
 
 
   ngOnInit() {
+    this.isLoading = true;
     this.route.params.subscribe(params => {
       //this.dataSource = null;
+      this.isLoading = true;
       this.idLeague = params['league'];
 
       this.scorersSubscribtion = this.rankingService.getScorersRanking(this.idLeague).subscribe( (scorers:any[]) => {
         //this.zak=[scorers[0]];
+        
         this.tabScorer = [];
        let scorer = scorers[0];
        console.log(scorers[0]);
@@ -64,14 +68,16 @@ export class ScorerComponent implements OnInit {
         }
         this.dataSource = new MatTableDataSource(this.tabScorer);
         this.dataSource.sort = this.sort;
+        this.isLoading = false;
       })
+      
     })
 
   }
 
   ngOnDestroy() {
     console.log('component rankingService destroyed');
-    this.rankingServiceSubscribtion.unsubscribe();
+    //this.rankingServiceSubscribtion.unsubscribe();
     this.dataSource = null;
   }
 

@@ -1,5 +1,5 @@
-
-<table mat-table  [dataSource]="dataSource" matSort class="mat-elevation-z8">
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<table mat-table *ngIf="!isLoading"  [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
   <!-- Position Column -->
   <ng-container matColumnDef="player">

@@ -39,6 +39,7 @@ import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { SwaggerApiComponent } from './swagger-api/swagger-api.component';
 import { ScorerComponent } from './scorer/scorer.component';
+import { PredictionComponent } from './prediction/prediction.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ScorerComponent } from './scorer/scorer.component';
     SignupComponent,
     ErrorComponent,
     SwaggerApiComponent,
-    ScorerComponent
+    ScorerComponent,
+    PredictionComponent
   ],
   imports: [
     BrowserModule,

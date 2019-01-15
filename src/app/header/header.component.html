@@ -13,7 +13,7 @@
         </button>
 
         <button mat-menu-item [matMenuTriggerFor]="leagues"> <img src="assets/match32.png" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LEAGUES</button>
-        <button mat-menu-item><img src="assets/prediction32.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PREDICTIONS</button>
+        <button mat-menu-item routerLink="/prediction" routerLinkActive="mat-accent"><img src="assets/prediction32.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PREDICTIONS</button>
         <button mat-menu-item routerLink="/live" routerLinkActive="mat-accent"><img src="assets/live.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LIVE
             MATCHES</button>
         <!--<button *ngIf="userIsAuthenticated" mat-menu-item routerLink="/favorite" routerLinkActive="mat-accent"><mat-icon>star</mat-icon></button>

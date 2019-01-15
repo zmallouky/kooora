@@ -13,7 +13,7 @@ import { IMatch } from '../match.model';
 export class MatchSavedComponent implements OnInit {
     matchs: IMatch[] = [];
     matchServiceSubscribtion: Subscription;
-
+    hell : Subscription;
     constructor(public postService: MatchService) { };
 
     ngOnInit() {
@@ -24,11 +24,19 @@ export class MatchSavedComponent implements OnInit {
     }
     onDelete(matchId: string) {
         console.log("match deleted");
-        this.postService.deleteMatch(matchId);
-        this.matchServiceSubscribtion = this.postService.getsavedMatch().subscribe((matchs: any[]) => {
+        this.hell = this.postService.deleteMatch(matchId).subscribe((matchs: any[])=>{
+            this.matchServiceSubscribtion = this.postService.getsavedMatch().subscribe((matchs: any[]) => {
+                console.log("retour service=>" + matchs);
+                this.matchs = matchs;
+                
+            });
+            return 0;
+        });
+        
+        /*this.matchServiceSubscribtion = this.postService.getsavedMatch().subscribe((matchs: any[]) => {
             console.log("retour service=>" + matchs);
             this.matchs = matchs;
-        });
+        });*/
     }
 }
 
