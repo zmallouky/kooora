@@ -4,10 +4,10 @@ Une application web destinée aux fans du football.
 Une application qui consomme les données de l'API tierce **https://apifootball.com/**
 
 
-## Langages utilisés ?
-* Angular
-* NodeJs
-* Mongoose
+## Technologies utilisées ?
+* Angular ( front-end )
+* NodeJs ( back-end )
+* MongoDB ( Base de données orientée documents ) 
 
 ## Serveur de développement
 
