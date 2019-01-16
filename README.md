@@ -1,27 +1,24 @@
-# Soccer
+# Bienvenue sur GOAAAL!
+Une application web destinée aux fans du football.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
+Une application qui consomme les données de l'API tierce **https://apifootball.com/**
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Langages utilisés ?
+* Angular
+* NodeJs
+* Mongoose
 
-## Code scaffolding
+## Serveur de développement
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Pour lancer le projet en mode développement :
+1. Clonez le projet sur votre ordinateur et placez-vous sous le répértoire **kooora**.
+2. Lancez la commande **npm run start:server** pour démarrer **nodeJS** et établire la connexion avec la base de donnée.
+3. Lancez la commande **ng serve** pour compiler l'ensemble du projet et de lancer un serveur web sur le port **4200**.
+4. Lancer votre navigateur préféré sur l'URL **http://localhost:4200** pour voir vos changements sur le code.
 
-## Build
+## Responsive ?
+Oui, il est responsive!
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Usage
+L'application est disponible sur le site **http://ec2-35-180-198-208.eu-west-3.compute.amazonaws.com**.
