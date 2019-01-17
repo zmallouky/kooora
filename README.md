@@ -7,7 +7,7 @@ Une application qui consomme les données de l'API tierce **https://apifootball.
 ## Technologies utilisées ?
 * Angular 7.1.0 ( front-end )
 * Express.js 4.16.4 ( back-end )
-* mongoose 5.4.1 ( Base de données orientée documents ) 
+* MongoDB 4.0.4 ( Base de données orientée documents ) 
 
 ## Serveur de développement
 
