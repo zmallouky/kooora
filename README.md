@@ -30,6 +30,11 @@ Les icons sont récupérées depuis :
 ```
 https://www.flaticon.com/
 ```
+## Documentation Swagger
+Pour bien visualiser la documentation swagger, utilisez le lien suivant :
+```
+https://htmlpreview.github.io/?https://github.com/elboanas/kooora/blob/master/swagger_doc.html
+```
 
 ## Responsive ?
 Oui, il est responsive!
