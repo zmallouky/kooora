@@ -35,9 +35,10 @@ Pour bien visualiser la documentation swagger, utilisez le lien suivant :
 ```
 https://htmlpreview.github.io/?https://github.com/elboanas/kooora/blob/master/swagger_doc.html
 ```
-
+## Single Page Application (SPA) ?
+Oui, il s'agit d'une SPA. 
 ## Responsive ?
-Oui, il est responsive!
+Oui, elle est responsive!
 
 ## Usage
 L'application est disponible sur le site **http://ec2-35-180-198-208.eu-west-3.compute.amazonaws.com**.
