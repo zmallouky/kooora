@@ -25,10 +25,17 @@ ng serve
 ```
 http://localhost:4200
 ```
-
+## Ressources externes
+Les icons sont récupérées depuis :
+```
+https://www.flaticon.com/
+```
 
 ## Responsive ?
 Oui, il est responsive!
 
 ## Usage
 L'application est disponible sur le site **http://ec2-35-180-198-208.eu-west-3.compute.amazonaws.com**.
+```
+http://ec2-35-180-198-208.eu-west-3.compute.amazonaws.com
+```
