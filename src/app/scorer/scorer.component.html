@@ -1,9 +1,10 @@
+<h2><img src="assets/{{Logo}}.png">  {{League}} TOP SCORER</h2>
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <table mat-table *ngIf="!isLoading"  [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
   <!-- Position Column -->
   <ng-container matColumnDef="player">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Position </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Player </th>
     <td mat-cell *matCellDef="let element"> {{element.player}} </td>
   </ng-container>
 

@@ -40,6 +40,8 @@ import { ErrorComponent } from './error/error.component';
 import { SwaggerApiComponent } from './swagger-api/swagger-api.component';
 import { ScorerComponent } from './scorer/scorer.component';
 import { PredictionComponent } from './prediction/prediction.component';
+import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { PredictionComponent } from './prediction/prediction.component';
     ErrorComponent,
     SwaggerApiComponent,
     ScorerComponent,
-    PredictionComponent
+    PredictionComponent,
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

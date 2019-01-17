@@ -46,7 +46,8 @@ export class MatchService {
             hometeam: apiMatch.match_hometeam_name,
             awayteam: apiMatch.match_awayteam_name,
             hometeamScore: apiMatch.match_hometeam_score,
-            awayteamScore: apiMatch.match_awayteam_score
+            awayteamScore: apiMatch.match_awayteam_score,
+            match_time: apiMatch.match_time
           };
           return appMatch;
         })
@@ -93,15 +94,16 @@ export class MatchService {
             awayteam: apiMatch.match_awayteam_name,
             prob_HW: apiMatch.prob_HW,
             prob_D: apiMatch.prob_D,
-            prob_AW: apiMatch.prob_AW
+            prob_AW: apiMatch.prob_AW,
+            match_time: apiMatch.match_time
           };
           return appMatch;
         })
       ));
   }
 
-  saveMatch(hometeam: string, awayteam: string, hometeamScore, awayteamScore: string) {
-    const matchSaved = { hometeam: hometeam, awayteam: awayteam, hometeamScore: hometeamScore, awayteamScore: awayteamScore };
+  saveMatch(hometeam: string, awayteam: string, hometeamScore, awayteamScore: string, match_time) {
+    const matchSaved = { hometeam: hometeam, awayteam: awayteam, hometeamScore: hometeamScore, awayteamScore: awayteamScore, match_time: match_time };
     this.http.post(environment.authApi+"match/save", matchSaved)
       .subscribe(response => {
         console.log(response);
@@ -118,8 +120,11 @@ export class MatchService {
             awayteam: apiMatch.awayteam,
             hometeamScore: apiMatch.hometeamScore,
             awayteamScore: apiMatch.awayteamScore,
+            match_time: apiMatch.match_time,
+            
             creator: apiMatch.creator
           };
+          console.log(appMatch);
           this.savedMatch.push(appMatch);
           return appMatch;
         })

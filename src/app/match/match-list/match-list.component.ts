@@ -23,6 +23,8 @@ export class MatchListComponent implements OnInit, OnDestroy {
   favColor = "warn";
   public userIsAutenticated = false;
   private authStatusSub: Subscription;
+  League: string;
+  Logo: string;
 
   constructor(public postService: MatchService, private authService: AuthService,
     private route: ActivatedRoute) {
@@ -37,6 +39,11 @@ export class MatchListComponent implements OnInit, OnDestroy {
     });
     this.route.params.subscribe(params => {
       this.idLeague = params['league'];
+      this.idLeague = params['league'];
+
+      if(this.idLeague == '62'){ this.League = 'ENGLAND'; this.Logo = 'england'}
+      if(this.idLeague == '109'){ this.League = 'SPANISH'; this.Logo = 'spain'}
+      if(this.idLeague == '127'){ this.League = 'FRANCE'; this.Logo = 'france'}
       let today = this.dateFormat(new Date().toLocaleDateString());
       this.matchServiceSubscribtion = this.postService.getMatchs(this.idLeague, today).subscribe((matchs: any[]) => {
         console.log("retour service=>" + matchs);
@@ -48,14 +55,13 @@ export class MatchListComponent implements OnInit, OnDestroy {
 
   }
 
-  favorite(home: string, away: string, scoreHome: string, scoreAway, date: string, fav) {
+  favorite(home: string, away: string, scoreHome: string, scoreAway, match_time, date: string, fav) {
     console.log("home :" + home + " away :" + away + "scoreHome " + scoreHome + "scoreAway" +
       scoreAway + " date :" + this.dateFormat(date) + " color :" + fav.color);
-    if (fav.color == "warn")
-      fav.color = "grey"
-    else
-      fav.color = "warn"
-    return this.postService.saveMatch(home, away, scoreHome, scoreAway);
+    if (fav.color != "warn"){
+    fav.color = "warn"
+    return this.postService.saveMatch(home, away, scoreHome, scoreAway, match_time);
+  }
 
   }
 
@@ -71,6 +77,10 @@ export class MatchListComponent implements OnInit, OnDestroy {
   }
 
   getDate(param: string) {
+
+    if(this.idLeague == '62'){ this.League = 'ENGLAND'; this.Logo = 'england'}
+    if(this.idLeague == '109'){ this.League = 'SPANISH'; this.Logo = 'spain'}
+    if(this.idLeague == '127'){ this.League = 'FRANCE'; this.Logo = 'france'}
     this.matchs = [];
     let date = this.dateFormat(param);
     this.matchServiceSubscribtion = this.postService.getMatchs(this.idLeague, date).subscribe((matchs: any[]) => {

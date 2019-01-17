@@ -1,3 +1,5 @@
+
+<h2>PREDICTION</h2>
 <mat-form-field>
   <input matInput [matDatepicker]="picker" [(ngModel)]="Date" #date readonly placeholder="Choose day" (dateChange)="getDate(date.value)">
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -9,20 +11,14 @@
 <mat-accordion multi="true" *ngIf="liveMatchSpain.length>0">
   <mat-expansion-panel *ngFor="let match of liveMatchSpain">
     <mat-expansion-panel-header (dblclick)="doubleClick()">
-      {{match.hometeam}} - {{match.awayteam}}
+      {{match.hometeam}} - {{match.awayteam}} ({{match.match_time}})
     </mat-expansion-panel-header>
     {{match.prob_HW}}% - {{match.prob_D}}% - {{match.prob_AW}}%
-    <mat-action-row>
-      <button *ngIf="userIsAutenticated" #fav (click)="favorite(match.hometeam, match.awayteam, match.hometeamScore,
-             match.awayteamScore, date.value, fav)"
-        mat-icon-button>
-        <mat-icon aria-label="Example icon-button with a heart icon" >favorite</mat-icon>
-      </button>
-    </mat-action-row>
+
   </mat-expansion-panel>
 </mat-accordion>
 
-<p *ngIf="liveMatchSpain.length<=0">No live match</p>
+<p *ngIf="liveMatchSpain.length<=0">No match today</p>
 
 <!---English live match-->
 <mat-toolbar class="uniform-color"><img src="assets/england.png">&nbsp;&nbsp;&nbsp;<h6>English League</h6></mat-toolbar>
@@ -31,20 +27,14 @@
 <mat-accordion multi="true" *ngIf="liveMatchEngland.length>0">
   <mat-expansion-panel *ngFor="let match of liveMatchEngland">
     <mat-expansion-panel-header (dblclick)="doubleClick()">
-      {{match.hometeam}} - {{match.awayteam}}
+      {{match.hometeam}} - {{match.awayteam}} ({{match.match_time}})
     </mat-expansion-panel-header>
     {{match.prob_HW}}% - {{match.prob_D}}% - {{match.prob_AW}}%
-    <mat-action-row>
-      <button *ngIf="userIsAutenticated" #fav (click)="favorite(match.hometeam, match.awayteam, match.hometeamScore,
-             match.awayteamScore, date.value, fav)"
-        mat-icon-button>
-        <mat-icon aria-label="Example icon-button with a heart icon" >favorite</mat-icon>
-      </button>
-    </mat-action-row>
+
   </mat-expansion-panel>
 </mat-accordion>
 
-<p *ngIf="liveMatchEngland.length<=0">No live match</p>
+<p *ngIf="liveMatchEngland.length<=0">No match today</p>
 
 
 <!---france live match-->
@@ -54,17 +44,11 @@
 <mat-accordion multi="true" *ngIf="liveMatchFrance.length>0">
   <mat-expansion-panel *ngFor="let match of liveMatchFrance">
     <mat-expansion-panel-header (dblclick)="doubleClick()">
-      {{match.hometeam}} - {{match.awayteam}}
+      {{match.hometeam}} - {{match.awayteam}} ({{match.match_time}})
     </mat-expansion-panel-header>
     {{match.prob_HW}}% - {{match.prob_D}}% - {{match.prob_AW}}%
-    <mat-action-row>
-      <button *ngIf="userIsAutenticated" #fav (click)="favorite(match.hometeam, match.awayteam, match.hometeamScore,
-             match.awayteamScore, date.value, fav)"
-        mat-icon-button>
-        <mat-icon aria-label="Example icon-button with a heart icon" >favorite</mat-icon>
-      </button>
-    </mat-action-row>
+
   </mat-expansion-panel>
 </mat-accordion>
 
-<p *ngIf="liveMatchFrance.length<=0">No live match</p>
+<p *ngIf="liveMatchFrance.length<=0">No match today</p>

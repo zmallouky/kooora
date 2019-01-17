@@ -5,6 +5,7 @@ const userSchema = mongoose.Schema({
     awayteam: { type: String, required: true },
     hometeamScore: { type: String, required: false },
     awayteamScore: { type: String, required: false },
+    match_time: { type: String, required: false },
     creator: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }
 });
 

@@ -6,16 +6,17 @@
     <button mat-button [matMenuTriggerFor]="menu">
         <img src="assets/menu.png">
     </button>
-
+    
     <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+       <!-- <button mat-menu-item routerLink="/" routerLinkActive="mat-accent">
             <img src="assets/home1.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HOME
-        </button>
+        </button> -->
 
         <button mat-menu-item [matMenuTriggerFor]="leagues"> <img src="assets/match32.png" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LEAGUES</button>
         <button mat-menu-item routerLink="/prediction" routerLinkActive="mat-accent"><img src="assets/prediction32.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PREDICTIONS</button>
         <button mat-menu-item routerLink="/live" routerLinkActive="mat-accent"><img src="assets/live.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LIVE
             MATCHES</button>
+
         <!--<button *ngIf="userIsAuthenticated" mat-menu-item routerLink="/favorite" routerLinkActive="mat-accent"><mat-icon>star</mat-icon></button>
     <button *ngIf="!userIsAuthenticated" mat-menu-item routerLink="/signup" routerLinkActive="mat-accent"><mat-icon>person_add</mat-icon></button>
     <button *ngIf="!userIsAuthenticated" mat-menu-item routerLink="/login" routerLinkActive="mat-accent"><mat-icon>person</mat-icon></button>

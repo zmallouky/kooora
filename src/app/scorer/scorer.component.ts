@@ -30,6 +30,8 @@ export class ScorerComponent implements OnInit {
   goals;
   isLoading: boolean;
   idLeague;
+  League;
+  Logo;
   tabScorer: IScorer[] = [];
 
   constructor(private rankingService: RankingService,private route: ActivatedRoute) { }
@@ -48,10 +50,12 @@ export class ScorerComponent implements OnInit {
       //this.dataSource = null;
       this.isLoading = true;
       this.idLeague = params['league'];
+      if(this.idLeague == '62'){ this.League = 'ENGLAND'; this.Logo = 'england'}
+      if(this.idLeague == '109'){ this.League = 'SPANISH'; this.Logo = 'spain'}
+      if(this.idLeague == '127'){ this.League = 'FRANCE'; this.Logo = 'france'}
 
       this.scorersSubscribtion = this.rankingService.getScorersRanking(this.idLeague).subscribe( (scorers:any[]) => {
-        //this.zak=[scorers[0]];
-        
+
         this.tabScorer = [];
        let scorer = scorers[0];
        console.log(scorers[0]);
@@ -66,6 +70,13 @@ export class ScorerComponent implements OnInit {
             goals:scorer[this.scorers[i]],
           })
         }
+        this.tabScorer.sort((r1, r2) => {
+          if (Number(r1.goals) < Number(r2.goals))
+            return 1;
+          if (Number(r1.goals) > Number(r2.goals))
+            return -1;
+          return 0;
+        });
         this.dataSource = new MatTableDataSource(this.tabScorer);
         this.dataSource.sort = this.sort;
         this.isLoading = false;

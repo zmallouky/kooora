@@ -4,6 +4,7 @@ export interface IMatch {
     awayteam?: String;
     hometeamScore?: String;
     awayteamScore?: String;
+    match_time?: String;
 }
 export interface IPrediction {
     id ?: String,
@@ -12,4 +13,5 @@ export interface IPrediction {
     prob_HW?: String;
     prob_D?: String;
     prob_AW?: String;
+    match_time?: String;
 }

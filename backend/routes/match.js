@@ -11,6 +11,7 @@ router.post("/save", checkAuth, (req, res, next) => {
     awayteam: req.body.awayteam,
     hometeamScore: req.body.hometeamScore,
     awayteamScore: req.body.awayteamScore,
+    match_time: req.body.match_time,
     creator: req.userData.userId
   });
   match.save() //save match to db

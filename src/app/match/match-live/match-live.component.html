@@ -1,3 +1,4 @@
+<h2>LIVE MATCH</h2>
 <!---Spanish live match-->
 <mat-toolbar class="uniform-color"><img src="assets/spain.png">&nbsp;&nbsp;&nbsp;<h6>Spanish League</h6></mat-toolbar>
 <mat-accordion multi="true" *ngIf="liveMatchSpain.length>0">
@@ -6,13 +7,13 @@
       {{match.hometeam}} - {{match.awayteam}}
     </mat-expansion-panel-header>
     {{match.hometeamScore}} - {{match.awayteamScore}}
-    <mat-action-row>
+   <!-- <mat-action-row>
       <button *ngIf="userIsAutenticated" #fav (click)="favorite(match.hometeam, match.awayteam, match.hometeamScore,
              match.awayteamScore, date.value, fav)"
         mat-icon-button>
         <mat-icon aria-label="Example icon-button with a heart icon" >favorite</mat-icon>
       </button>
-    </mat-action-row>
+    </mat-action-row>-->
   </mat-expansion-panel>
 </mat-accordion>
 
@@ -38,7 +39,7 @@
   </mat-expansion-panel>
 </mat-accordion>
 
-<p *ngIf="liveMatchSpain.length<=0">No live match</p>
+<p *ngIf="liveMatchEngland.length<=0">No live match</p>
 
 
 <!---france live match-->
@@ -61,4 +62,4 @@
   </mat-expansion-panel>
 </mat-accordion>
 
-<p *ngIf="liveMatchSpain.length<=0">No live match</p>
+<p *ngIf="liveMatchFrance.length<=0">No live match</p>

@@ -21,6 +21,8 @@ export class RankingComponent implements OnInit, OnDestroy {
   isLoading: boolean;
   scorers: any[];
   goals;
+  League: string;
+  Logo: string;
 
   constructor(private rankingService: RankingService, private route: ActivatedRoute) { };
 
@@ -36,24 +38,15 @@ export class RankingComponent implements OnInit, OnDestroy {
       this.isLoading = true;
       //this.dataSource = null;
       this.idLeague = params['league'];
+
+      if(this.idLeague == '62'){ this.League = 'ENGLAND'; this.Logo = 'england'}
+      if(this.idLeague == '109'){ this.League = 'SPANISH'; this.Logo = 'spain'}
+      if(this.idLeague == '127'){ this.League = 'FRANCE'; this.Logo = 'france'}
       this.rankingServiceSubscribtion = this.rankingService.getRanking(this.idLeague).subscribe((ranking: IRanking[]) => {
           this.dataSource = new MatTableDataSource(ranking);
           this.dataSource.sort = this.sort;
           this.isLoading = false;
       });
-      this.scorersSubscribtion = this.rankingService.getScorersRanking(this.idLeague).subscribe( (scorers:any[]) => {
-       
-       let scorer = scorers[0];
-       this.goals = scorer;
-        this.scorers = Object.keys(scorers[0]);
-
-        console.log(this.scorers[0] +" "+scorer[this.scorers[0]]);
-        
-        
-        
-        
-        
-      })
     })
   }
 

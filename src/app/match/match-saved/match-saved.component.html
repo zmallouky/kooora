@@ -1,7 +1,8 @@
+<h2><img src="assets/star.png">  Favorite Match</h2>
 <mat-accordion multi="true" *ngIf="matchs.length>0">
     <mat-expansion-panel *ngFor="let matchs of matchs">
       <mat-expansion-panel-header (dblclick)="doubleClick()">
-        {{matchs.hometeam}} - {{matchs.awayteam}} 
+        {{matchs.hometeam}} - {{matchs.awayteam}} ({{matchs.match_time}})
       </mat-expansion-panel-header>
       {{matchs.hometeamScore}} - {{matchs.awayteamScore}}
       <mat-action-row>

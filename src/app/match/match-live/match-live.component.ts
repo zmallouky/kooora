@@ -3,6 +3,7 @@ import { MatchService } from '../match.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 
+
 import { IMatch } from '../match.model';
 
 @Component({
@@ -48,6 +49,16 @@ export class MatchLiveComponent implements OnInit, OnDestroy {
       console.log("live match service" + matchs);
       this.liveMatchFrance = matchs;
     });
+  }
+
+  favorite(home: string, away: string, scoreHome: string, scoreAway, match_time, date: string, fav) {
+    console.log("home :" + home + " away :" + away + "scoreHome " + scoreHome + "scoreAway" +
+      scoreAway + " date :" + this.dateFormat(date) + " color :" + fav.color);
+    if (fav.color != "warn"){
+    fav.color = "warn"
+    //return this.postService.saveMatch(home, away, scoreHome, scoreAway, match_time);
+  }
+
   }
 
   dateFormat(param: string) {
