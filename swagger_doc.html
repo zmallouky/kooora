@@ -762,7 +762,7 @@ margin-bottom: 20px;
                         <p class="marked">delete a saved match using his id</p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/delete/:id</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/api/match/delete/:id</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -782,7 +782,7 @@ margin-bottom: 20px;
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Favorite-deleteSavedMatch-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE "https://virtserver.swaggerhub.com/zmallouky/Goaaal/1.0.0/delete/:id"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE "https://virtserver.swaggerhub.com/zmallouky/Goaaal/1.0.0/api/match/delete/:id"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Favorite-deleteSavedMatch-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -978,7 +978,7 @@ except ApiException as e:
                         <p class="marked">list all saved matches for the current user</p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/api/match/</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -998,7 +998,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Favorite-getSavedMatches-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/zmallouky/Goaaal/1.0.0/"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://virtserver.swaggerhub.com/zmallouky/Goaaal/1.0.0/api/match/"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Favorite-getSavedMatches-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -1195,7 +1195,7 @@ except ApiException as e:
 </p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/save</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/api/match/save</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -1215,7 +1215,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Favorite-saveMatch-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://virtserver.swaggerhub.com/zmallouky/Goaaal/1.0.0/save?hometeam=&awayteam=&hometeamScore=&awayteamScore="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://virtserver.swaggerhub.com/zmallouky/Goaaal/1.0.0/api/match/save?hometeam=&awayteam=&hometeamScore=&awayteamScore="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Favorite-saveMatch-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -1554,7 +1554,7 @@ except ApiException as e:
 </p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/login</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/api/user/login</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -1574,7 +1574,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Users-loginUser-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://virtserver.swaggerhub.com/zmallouky/Goaaal/1.0.0/login?email=&password="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://virtserver.swaggerhub.com/zmallouky/Goaaal/1.0.0/api/user/login?email=&password="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Users-loginUser-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -1844,7 +1844,7 @@ except ApiException as e:
 </p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/signp</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/api/user/signp</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -1864,7 +1864,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Users-signupUser-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://virtserver.swaggerhub.com/zmallouky/Goaaal/1.0.0/signp?email=&password="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://virtserver.swaggerhub.com/zmallouky/Goaaal/1.0.0/api/user/signp?email=&password="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Users-signupUser-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
