@@ -1,11 +1,12 @@
 import {Component, OnInit, ViewChild, OnDestroy} from '@angular/core';
-import {MatSort, MatTableDataSource} from '@angular/material';
 import { Subscription } from 'rxjs';
 
 import { IRanking } from './ranking.model';
 import { RankingService } from './ranking.service';
 import { Router } from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({

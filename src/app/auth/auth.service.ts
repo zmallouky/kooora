@@ -11,7 +11,7 @@ import { Subject } from 'rxjs';
 export class AuthService {
   private isAuthenticated = false;
   private token: string;
-  private tokenTimer: NodeJS.Timer;
+  private tokenTimer: ReturnType<typeof setTimeout>;
   private authStatusListener = new Subject<boolean>();
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -102,7 +102,7 @@ export class AuthService {
     if (expiresIn > 0) {
       this.token = authInformation.token;
       this.isAuthenticated = true;
-      this.setAuthTimer(expiresIn / 1000); // convert ms to sec 
+      this.setAuthTimer(expiresIn / 1000); // convert ms to sec
       this.authStatusListener.next(true);
     }
   }

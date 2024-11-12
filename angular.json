@@ -39,7 +39,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -58,18 +57,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "soccer:build"
+            "buildTarget": "soccer:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "soccer:build:production"
+              "buildTarget": "soccer:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "soccer:build"
+            "buildTarget": "soccer:build"
           }
         },
         "test": {
@@ -133,5 +132,7 @@
       }
     }
   },
-  "defaultProject": "soccer"
+  "cli": {
+    "analytics": "9ac33ba9-1627-48aa-b404-49a567f8b9ae"
+  }
 }
