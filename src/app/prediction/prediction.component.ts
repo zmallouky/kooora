@@ -36,7 +36,7 @@ export class PredictionComponent implements OnInit, OnDestroy {
       this.liveMatchSpain = matchs;
     });
 
-    this.matchServiceSubscribtion = this.postService.getPredictions('62', today).subscribe((matchs: any[]) => {
+    this.matchServiceSubscribtion = this.postService.getPredictions('152', today).subscribe((matchs: any[]) => {
       console.log("live match service" + matchs);
       this.liveMatchEngland = matchs;
     });
@@ -68,7 +68,7 @@ export class PredictionComponent implements OnInit, OnDestroy {
       this.liveMatchSpain = matchs;
     });
 
-    this.matchServiceSubscribtion = this.postService.getPredictions('62', date).subscribe((matchs: any[]) => {
+    this.matchServiceSubscribtion = this.postService.getPredictions('152', date).subscribe((matchs: any[]) => {
       console.log("live match service" + matchs);
       this.liveMatchEngland = matchs;
     });

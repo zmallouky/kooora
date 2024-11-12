@@ -40,7 +40,7 @@ export class MatchLiveComponent implements OnInit, OnDestroy {
       this.liveMatchSpain = matchs;
     });
 
-    this.matchServiceSubscribtion = this.postService.getLiveMatchs('62', today).subscribe((matchs: any[]) => {
+    this.matchServiceSubscribtion = this.postService.getLiveMatchs('152', today).subscribe((matchs: any[]) => {
       console.log("live match service" + matchs);
       this.liveMatchEngland = matchs;
     });

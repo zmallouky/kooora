@@ -31,7 +31,7 @@ export class MatchService {
       .set('from', date)
       .set('to', date)
       .set('league_id', idLeague)
-      .set('APIkey', '04f3c7e3a2e8e0eb93efad3ca8a2b647229b9afb6ec4a4f56ad5229623f52158');
+      .set('APIkey', environment.apiKey);
 
     //let matchsObservable:Observable<any> = this.http.get(environment.footballApi,{ params: params });
     //return matchsObservable
@@ -61,7 +61,7 @@ export class MatchService {
       .set('to', date)
       .set('league_id', idLeague)
       .set('match_live', '1')
-      .set('APIkey', '04f3c7e3a2e8e0eb93efad3ca8a2b647229b9afb6ec4a4f56ad5229623f52158');
+      .set('APIkey', environment.apiKey);
     return this.http.
       get(environment.footballApi, { params })
       .pipe(map((apiMatchs: any) =>
@@ -84,7 +84,7 @@ export class MatchService {
       .set('from', date)
       .set('to', date)
       .set('league_id', idLeague)
-      .set('APIkey', '04f3c7e3a2e8e0eb93efad3ca8a2b647229b9afb6ec4a4f56ad5229623f52158');
+      .set('APIkey', environment.apiKey);
     return this.http.
       get(environment.footballApi, { params })
       .pipe(map((apiMatchs: any) =>
@@ -121,7 +121,7 @@ export class MatchService {
             hometeamScore: apiMatch.hometeamScore,
             awayteamScore: apiMatch.awayteamScore,
             match_time: apiMatch.match_time,
-            
+
             creator: apiMatch.creator
           };
           console.log(appMatch);

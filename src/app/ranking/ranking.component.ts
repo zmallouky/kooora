@@ -29,7 +29,7 @@ export class RankingComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['position', 'teamname', 'played', 'w',
     'd', 'l', 'gf', 'ga', 'pts'];
   dataSource = new MatTableDataSource([]);
- 
+
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -39,7 +39,7 @@ export class RankingComponent implements OnInit, OnDestroy {
       //this.dataSource = null;
       this.idLeague = params['league'];
 
-      if(this.idLeague == '62'){ this.League = 'ENGLAND'; this.Logo = 'england'}
+      if(this.idLeague == '152'){ this.League = 'ENGLAND'; this.Logo = 'england'}
       if(this.idLeague == '109'){ this.League = 'SPANISH'; this.Logo = 'spain'}
       if(this.idLeague == '127'){ this.League = 'FRANCE'; this.Logo = 'france'}
       this.rankingServiceSubscribtion = this.rankingService.getRanking(this.idLeague).subscribe((ranking: IRanking[]) => {

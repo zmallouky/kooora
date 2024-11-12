@@ -18,18 +18,18 @@ export class RankingService {
     }
 
     getRanking(idLeague:string): Observable<IRanking[]> {
-        //let matchsObservable:Observable<any> = of(ranking);
+        // let matchsObservable:Observable<any> = of(ranking);
         // TODO uncomment to use real service call
-        //this.http.get<{message: string, posts: any}>('http://localhost:3000/api/posts')
-        //this.http.get(footballApi)
-        //console.log("league ==> "+idLeague);
+        // this.http.get<{message: string, posts: any}>('http://localhost:3000/api/posts')
+        // this.http.get(footballApi)
+        // console.log("league ==> "+idLeague);
         let params = new HttpParams()
         .set('action', 'get_standings')
         .set('league_id', idLeague)
-        .set('APIkey', '04f3c7e3a2e8e0eb93efad3ca8a2b647229b9afb6ec4a4f56ad5229623f52158');
-        //return matchsObservable
+        .set('APIkey', environment.apiKey);
+        // return matchsObservable
         return this.http.get(environment.footballApi, {params})
-        .pipe(map((apiRanking:any) => 
+        .pipe(map((apiRanking:any) =>
                     apiRanking.map((apiRanking)=> {
                      let appRanking:IRanking = {
                         teamname: apiRanking.team_name,
@@ -43,7 +43,7 @@ export class RankingService {
                         pts: apiRanking.overall_league_PTS,
                     };
                     return appRanking;
-                })   
+                })
         ),
         map((teams:IRanking[])=> teams.sort((r1:IRanking, r2:IRanking) => {
             if(Number(r1.position) < Number(r2.position)) return -1;
@@ -60,15 +60,15 @@ export class RankingService {
         .set('from', '2018-08-01')
         .set('to', '2019-02-01')
         .set('league_id', idLeague)
-        .set('APIkey', '04f3c7e3a2e8e0eb93efad3ca8a2b647229b9afb6ec4a4f56ad5229623f52158');
+        .set('APIkey', environment.apiKey);
         //let matchObservable:Observable<any> = of(matchs);
         return this.http.get(environment.footballApi, {params})
             .pipe(
-            map((matchs:any[]) => 
+            map((matchs:any[]) =>
                 matchs.map((match)=> {
                      match.goalscorer.map((goalscorer)=> {
                        let player = goalscorer.home_scorer.concat(goalscorer.away_scorer);
-                       
+
                         if( this.topScorer[player] == undefined)
                             this.topScorer[player] = 1;
                         else
@@ -79,6 +79,6 @@ export class RankingService {
                     return this.topScorer;
                  }))
             );
-        
+
     }
 }

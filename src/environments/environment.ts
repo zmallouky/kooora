@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  footballApi: 'https://apifootball.com/api/',
-  authApi: 'http://localhost:3000/api/'
+  footballApi: 'https://apiv3.apifootball.com/api/',
+  authApi: 'http://localhost:3000/api/',
+  apiKey: 'e222dd16e6f6146eb9723a6e22985bd12c58a71e2dbd1d4bf6f997e00f8e80fe'
 };
 
 /*

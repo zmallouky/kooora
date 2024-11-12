@@ -41,7 +41,7 @@ export class MatchListComponent implements OnInit, OnDestroy {
       this.idLeague = params['league'];
       this.idLeague = params['league'];
 
-      if(this.idLeague == '62'){ this.League = 'ENGLAND'; this.Logo = 'england'}
+      if(this.idLeague == '152'){ this.League = 'ENGLAND'; this.Logo = 'england'}
       if(this.idLeague == '109'){ this.League = 'SPANISH'; this.Logo = 'spain'}
       if(this.idLeague == '127'){ this.League = 'FRANCE'; this.Logo = 'france'}
       let today = this.dateFormat(new Date().toLocaleDateString());
@@ -50,8 +50,8 @@ export class MatchListComponent implements OnInit, OnDestroy {
         this.matchs = matchs;
       });
     });
-    
-  
+
+
 
   }
 
@@ -78,7 +78,7 @@ export class MatchListComponent implements OnInit, OnDestroy {
 
   getDate(param: string) {
 
-    if(this.idLeague == '62'){ this.League = 'ENGLAND'; this.Logo = 'england'}
+    if(this.idLeague == '152'){ this.League = 'ENGLAND'; this.Logo = 'england'}
     if(this.idLeague == '109'){ this.League = 'SPANISH'; this.Logo = 'spain'}
     if(this.idLeague == '127'){ this.League = 'FRANCE'; this.Logo = 'france'}
     this.matchs = [];
