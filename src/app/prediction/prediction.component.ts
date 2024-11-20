@@ -31,7 +31,7 @@ export class PredictionComponent implements OnInit, OnDestroy {
 
     let today = this.dateFormat(new Date().toLocaleDateString());
 
-    this.matchServiceSubscribtion = this.postService.getPredictions('109', today).subscribe((matchs: any[]) => {
+    this.matchServiceSubscribtion = this.postService.getPredictions('302', today).subscribe((matchs: any[]) => {
       console.log("live match service" + matchs);
       this.liveMatchSpain = matchs;
     });
@@ -63,7 +63,7 @@ export class PredictionComponent implements OnInit, OnDestroy {
     this.liveMatchFrance = [];
 
     let date = this.dateFormat(param);
-    this.matchServiceSubscribtion = this.postService.getPredictions('109', date).subscribe((matchs: any[]) => {
+    this.matchServiceSubscribtion = this.postService.getPredictions('302', date).subscribe((matchs: any[]) => {
       console.log("live match service" + matchs);
       this.liveMatchSpain = matchs;
     });

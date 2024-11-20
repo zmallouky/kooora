@@ -41,7 +41,7 @@ export class RankingComponent implements OnInit, OnDestroy {
       this.idLeague = params['league'];
 
       if(this.idLeague == '152'){ this.League = 'ENGLAND'; this.Logo = 'england'}
-      if(this.idLeague == '109'){ this.League = 'SPANISH'; this.Logo = 'spain'}
+      if(this.idLeague == '302'){ this.League = 'SPANISH'; this.Logo = 'spain'}
       if(this.idLeague == '127'){ this.League = 'FRANCE'; this.Logo = 'france'}
       this.rankingServiceSubscribtion = this.rankingService.getRanking(this.idLeague).subscribe((ranking: IRanking[]) => {
           this.dataSource = new MatTableDataSource(ranking);

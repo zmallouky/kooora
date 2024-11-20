@@ -52,7 +52,7 @@ export class ScorerComponent implements OnInit {
       this.isLoading = true;
       this.idLeague = params['league'];
       if(this.idLeague == '152'){ this.League = 'ENGLAND'; this.Logo = 'england'}
-      if(this.idLeague == '109'){ this.League = 'SPANISH'; this.Logo = 'spain'}
+      if(this.idLeague == '302'){ this.League = 'SPANISH'; this.Logo = 'spain'}
       if(this.idLeague == '127'){ this.League = 'FRANCE'; this.Logo = 'france'}
 
       this.scorersSubscribtion = this.rankingService.getScorersRanking(this.idLeague).subscribe( (scorers:any[]) => {
